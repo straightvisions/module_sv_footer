@@ -1,17 +1,22 @@
-<footer>
-	<div class="container-fluid gradient-black font-size-sm">
-		<div class="container padding-v-lg text-grey">
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
-					<?php if (is_active_sidebar($this->get_module_name())){ ?>
-						<div id="footer_widgets" class="widget-area">
-							<ul>
-								<?php dynamic_sidebar($this->get_module_name()); ?>
-							</ul>
-						</div>
-					<?php } ?>
-				</div>
-			</div>
+<footer class="<?php echo $this->get_module_name(); ?> bg-dark text-center text-md-left">
+	<!-- Footer Links -->
+	<div class="container text-white py-5">
+		<div class="row">
+			<section class="left col-12 col-md-4">
+				<?php echo do_shortcode( '[sv_sidebar template = "footer_left"]' ); ?>
+			</section>
+			<section class="center col-12 col-md-4">
+				<?php echo do_shortcode( '[sv_sidebar template = "footer_center"]' ); ?>
+			</section>
+			<section class="right col-12 col-md-4">
+				<?php echo do_shortcode( '[sv_sidebar template = "footer_right"]' ); ?>
+			</section>
 		</div>
+	</div>
+
+	<!-- Copyright -->
+	<div class="copyright container-fluid text-center text-white-50 py-3">
+		© 2018 Copyright:
+		<a href="https://straightvisions.com">straightvisions.com</a>
 	</div>
 </footer>

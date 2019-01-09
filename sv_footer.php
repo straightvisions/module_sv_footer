@@ -9,19 +9,26 @@ namespace sv_100;
  * @since			1.0
  * @license			See license.txt or https://straightvisions.com
  */
-class sv_footer extends init {
-	static $scripts_loaded						= false;
 
+class sv_footer extends init {
 	public function __construct() {
 
 	}
 
 	public function init() {
+		// Module Info
+		$this->set_module_title( 'SV Footer' );
+		$this->set_module_desc( __( 'This module gives the ability to display the footer via the "[sv_footer]" shortcode.', $this->get_module_name() ) );
+
+		// Load Styles
+		static::$scripts->create( $this )
+			->set_source( $this->get_file_url( 'lib/css/frontend.css' ), $this->get_file_path( 'lib/css/frontend.css' ) );
+
+		// Shortcodes
 		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
-		add_action( 'after_setup_theme', array( $this, 'after_setup_theme' ) );
 	}
 
-	public function shortcode( $settings, $content='' ) {
+	public function shortcode( $settings, $content = '' ) {
 		$settings								= shortcode_atts(
 			array(
 				'inline'						=> false
@@ -29,7 +36,6 @@ class sv_footer extends init {
 			$settings,
 			$this->get_module_name()
 		);
-		$this->module_enqueue_scripts( $settings[ 'inline' ] );
 
 		ob_start();
 		include( $this->get_file_path( 'lib/tpl/frontend.php' ) );
@@ -37,13 +43,5 @@ class sv_footer extends init {
 		ob_end_clean();
 
 		return $output;
-	}
-
-	public function after_setup_theme() {
-		register_nav_menus(
-			array(
-				$this->get_module_name()				=> __( 'Footer Links', 'sv_100' )
-			)
-		);
 	}
 }

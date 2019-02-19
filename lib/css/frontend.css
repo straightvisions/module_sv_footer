@@ -1,0 +1,28 @@
+.sv_footer a {
+	color: rgba( 255, 255, 255, 1 );
+	transition: .25s ease;
+}
+
+.sv_footer a:hover {
+	color: rgba( 255, 255, 255, .5 );
+}
+
+.sv_footer ul {
+	padding: 0;
+}
+
+.sv_footer ul li {
+	list-style-type: none;
+}
+
+.sv_footer div.copyright {
+	background-color: rgba( 0, 0, 0, .3 );
+}
+
+.sv_footer div.sv_footer_links ul li.menu-item {
+	list-style-type: none;
+}
+
+.sv_footer div.sv_footer_links ul li.menu-item a {
+	color: #fff;
+}

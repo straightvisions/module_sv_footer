@@ -1,22 +1,18 @@
-<footer class="<?php echo $this->get_module_name(); ?>">
-	<div class="sv_container">
-		<div class="sv_section_wrapper">
-			<section>
-				<?php echo do_shortcode( '[sv_sidebar template = "footer_left"]' ); ?>
-			</section>
-			<section>
-				<?php echo do_shortcode( '[sv_sidebar template = "footer_center"]' ); ?>
-			</section>
-			<section>
-				<?php echo do_shortcode( '[sv_sidebar template = "footer_right"]' ); ?>
-			</section>
-		</div>
+<footer class="<?php echo $this->get_prefix(); ?>">
+	<div class="<?php echo $this->get_prefix( 'main_bar' ); ?> sv_common_container">
+		<?php
+		echo do_shortcode( '[sv_sidebar template = "footer_left"]' );
+		echo do_shortcode( '[sv_sidebar template = "footer_center"]' );
+		echo do_shortcode( '[sv_sidebar template = "footer_right"]' );
+		?>
 	</div>
-
-	<div class="sv_copyright">
-		<div class="sv_container">
-			© 2018 Copyright:
-			<a href="https://straightvisions.com">straightvisions.com</a>
+	<div class="<?php echo $this->get_prefix( 'theme_bar' ); ?> sv_common_container">
+		<div class="<?php echo $this->get_prefix( 'theme_info' ); ?>">
+			<a href="https://straightvisions.com/de/">
+				<img src="https://media-straightvisions.com/2018/02/logo.svg" alt="straightvisions Logos">
+			</a>
+			<span>straightvisions 100-Theme - developed by <a href="https://straightvisions.com/de/">straightvisions</a></span>
 		</div>
+		<div class="<?php echo $this->get_prefix( 'theme_links' ); ?>"></div>
 	</div>
 </footer>

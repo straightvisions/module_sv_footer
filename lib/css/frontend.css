@@ -9,18 +9,22 @@
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
-	padding-top: 50px;
-	padding-bottom: 25px;
 	margin-left: calc( var( --padding ) * -1 );
 	margin-right: calc( var( --padding ) * -1 );
 	color: #fff;
 }
 
 .sv_100_sv_footer_widgets_bar > * {
-	padding-left: var( --padding );
-	padding-right: var( --padding );
-	margin-bottom: 25px;
+	padding: 10px var( --padding ) 10px var( --padding );
 	flex: 1;
+}
+
+.sv_100_sv_footer_widgets_bar > *:first-child {
+	padding-top: 50px;
+}
+
+.sv_100_sv_footer_widgets_bar > *:last-child {
+	padding-bottom: 25px;
 }
 
 /* Theme Bar */
@@ -83,6 +87,10 @@
 @media ( min-width: 850px ) {
 	.sv_100_sv_footer_widgets_bar {
 		flex-direction: row;
+	}
+
+	.sv_100_sv_footer_widgets_bar > * {
+		padding: 50px var( --padding ) 25px var( --padding );
 	}
 
 	.sv_100_sv_footer_theme_bar {

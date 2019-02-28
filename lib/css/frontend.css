@@ -1,7 +1,7 @@
 /* General */
 .sv_100_sv_footer {
-	background: var( --color-bg-highlight );
-	color: var( --color-contrast );
+	background: rgb( var( --color-bg-highlight ) );
+	color: rgb( var( --color-contrast ) );
 }
 
 /* Widgets Bar*/
@@ -31,7 +31,7 @@
 .sv_100_sv_footer_theme_bar {
 	font-size: .8rem;
 	align-items: stretch;
-	border-top: 1px solid var( --color-primary );
+	border-top: 1px solid rgb( var( --color-primary ) );
 	display: flex;
 	flex-direction: column;
 	min-height: 50px;
@@ -48,13 +48,13 @@
 }
 
 .sv_100_sv_footer_theme_bar a {
-	color: var( --color-contrast );
+	color: rgb( var( --color-contrast ) );
 	text-decoration: none;
 	transition: .25s ease;
 }
 
 .sv_100_sv_footer_theme_bar a:hover {
-	color: var( --color-highlight );
+	color: rgb( var( --color-highlight ) );
 }
 
 .sv_100_sv_footer_theme_branding {

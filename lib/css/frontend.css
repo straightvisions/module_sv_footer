@@ -27,62 +27,6 @@
 	padding-bottom: 25px;
 }
 
-/* Theme Bar */
-.sv_100_sv_footer_theme_bar {
-	font-size: .8rem;
-	align-items: stretch;
-	border-top: 1px solid rgb( var( --color-primary ) );
-	display: flex;
-	flex-direction: column;
-	min-height: 50px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-
-.sv_100_sv_footer_theme_bar > * {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-
-.sv_100_sv_footer_theme_bar a {
-	color: rgb( var( --color-contrast ) );
-	text-decoration: none;
-	transition: .25s ease;
-}
-
-.sv_100_sv_footer_theme_bar a:hover {
-	color: rgb( var( --color-highlight ) );
-}
-
-.sv_100_sv_footer_theme_branding {
-	padding-bottom: 10px;
-}
-
-.sv_100_sv_footer_theme_branding img {
-	max-height: 28px;
-	max-width: 200px;
-}
-
-.sv_100_sv_footer_theme_links {
-	flex: 1;
-}
-
-.sv_100_sv_footer_theme_links a {
-	padding-left: 10px;
-	padding-right: 10px;
-}
-
-.sv_100_sv_footer_theme_links a:first-child {
-	padding-left: 0;
-}
-
-.sv_100_sv_footer_theme_links a:last-child {
-	padding-right: 0;
-}
-
 /* Breakpoints */
 @media ( min-width: 850px ) {
 	.sv_100_sv_footer_widgets_bar {
@@ -91,26 +35,5 @@
 
 	.sv_100_sv_footer_widgets_bar > * {
 		padding: 50px var( --padding ) 25px var( --padding );
-	}
-
-	.sv_100_sv_footer_theme_bar {
-		flex-direction: row;
-	}
-
-	.sv_100_sv_footer_theme_bar > * {
-		padding-bottom: 0;
-		padding-top: 0;
-	}
-
-	.sv_100_sv_footer_theme_branding {
-		padding-bottom: 0;
-	}
-
-	.sv_100_sv_footer_theme_branding img {
-		margin-right: 10px;
-	}
-
-	.sv_100_sv_footer_theme_links {
-		justify-content: flex-end;
 	}
 }

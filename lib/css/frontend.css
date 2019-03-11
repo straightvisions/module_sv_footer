@@ -17,6 +17,7 @@
 .sv_100_sv_footer_widgets_bar > * {
 	padding: 10px var( --padding ) 10px var( --padding );
 	flex: 1;
+	width: 33%;
 }
 
 .sv_100_sv_footer_widgets_bar > *:first-child {

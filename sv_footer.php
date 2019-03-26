@@ -27,10 +27,42 @@ class sv_footer extends init {
 		// Shortcodes
 		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
 
-		$this->scripts_queue['frontend']			= static::$scripts->create( $this )
+		$this->register_scripts()->register_sidebars();
+	}
+
+	protected function register_scripts() :sv_footer {
+		// Register Styles
+		$this->scripts_queue['frontend']        = static::$scripts
+			->create( $this )
 			->set_ID('frontend')
 			->set_path( 'lib/css/frontend.css' )
 			->set_inline(true);
+
+		return $this;
+	}
+
+	protected function register_sidebars() :sv_footer {
+		if ( isset( $this->get_root()->sv_sidebar ) ) {
+			$this->get_root()
+				->sv_sidebar
+				->create( $this )
+				->set_ID( 'left' )
+				->set_name( __( 'Footer - Left', $this->get_module_name() ) )
+				->set_desc( __( 'Widgets in this area will be shown in the left section of the footer.', $this->get_module_name() ) )
+				->load_sidebar()
+				->create( $this )
+				->set_ID( 'center' )
+				->set_name( __( 'Footer - Center', $this->get_module_name() ) )
+				->set_desc( __( 'Widgets in this area will be shown in the center section of the footer.', $this->get_module_name() ) )
+				->load_sidebar()
+				->create( $this )
+				->set_ID( 'right' )
+				->set_name( __( 'Footer - Right', $this->get_module_name() ) )
+				->set_desc( __( 'Widgets in this area will be shown in the right section of the footer.', $this->get_module_name() ) )
+				->load_sidebar();
+		}
+
+		return $this;
 	}
 
 	public function shortcode( $settings, $content = '' ) {

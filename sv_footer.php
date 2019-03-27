@@ -32,11 +32,17 @@ class sv_footer extends init {
 
 	protected function register_scripts() :sv_footer {
 		// Register Styles
-		$this->scripts_queue['frontend']        = static::$scripts
+		$this->scripts_queue['default']        = static::$scripts
 			->create( $this )
-			->set_ID('frontend')
-			->set_path( 'lib/css/frontend.css' )
-			->set_inline(true);
+			->set_ID( 'default' )
+			->set_path( 'lib/frontend/css/default.css' )
+			->set_inline( true );
+
+		$this->scripts_queue['sidebar_default'] = static::$scripts
+			->create( $this )
+			->set_ID( 'sidebar_default' )
+			->set_path( 'lib/frontend/css/sidebar_default.css' )
+			->set_inline( true );
 
 		return $this;
 	}
@@ -74,16 +80,33 @@ class sv_footer extends init {
 			$this->get_module_name()
 		);
 
-		// Load Styles
-		$this->scripts_queue['frontend']
-			->set_inline($settings['inline'])
-			->set_is_enqueued();
+		$this->router( $settings );
+	}
 
-		ob_start();
-		include( $this->get_path( 'lib/tpl/frontend.php' ) );
-		$output									= ob_get_contents();
-		ob_end_clean();
+	// Handles the routing of the templates
+	protected function router( array $settings ) :sv_footer {
+		$template = array(
+			'name'      => 'default',
+			'scripts'   => array(
+				$this->scripts_queue[ 'default' ]->set_inline( $settings['inline'] ),
+				$this->scripts_queue[ 'sidebar_default' ]->set_inline( $settings['inline'] ),
+			),
+		);
 
-		return $output;
+		$this->load_template( $template, $settings );
+
+		return $this;
+	}
+
+	// Loads the templates
+	protected function load_template( array $template, array $settings ) :sv_footer {
+		foreach ( $template['scripts'] as $script ) {
+			$script->set_is_enqueued();
+		}
+
+		// Loads the template
+		include ( $this->get_path('lib/frontend/tpl/' . $template['name'] . '.php' ) );
+
+		return $this;
 	}
 }

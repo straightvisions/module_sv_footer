@@ -71,7 +71,7 @@ class sv_footer extends init {
 		return $this;
 	}
 
-	public function shortcode( $settings, $content = '' ) {
+	public function shortcode( $settings, $content = '' ) :string {
 		$settings								= shortcode_atts(
 			array(
 				'inline'						=> true
@@ -80,11 +80,11 @@ class sv_footer extends init {
 			$this->get_module_name()
 		);
 
-		$this->router( $settings );
+		return $this->router( $settings );
 	}
 
 	// Handles the routing of the templates
-	protected function router( array $settings ) :sv_footer {
+	protected function router( array $settings ) :string {
 		$template = array(
 			'name'      => 'default',
 			'scripts'   => array(
@@ -93,20 +93,21 @@ class sv_footer extends init {
 			),
 		);
 
-		$this->load_template( $template, $settings );
-
-		return $this;
+		return $this->load_template( $template, $settings );
 	}
 
 	// Loads the templates
-	protected function load_template( array $template, array $settings ) :sv_footer {
+	protected function load_template( array $template, array $settings ) :string {
+		ob_start();
 		foreach ( $template['scripts'] as $script ) {
 			$script->set_is_enqueued();
 		}
 
 		// Loads the template
 		include ( $this->get_path('lib/frontend/tpl/' . $template['name'] . '.php' ) );
+		$output							        = ob_get_contents();
+		ob_end_clean();
 
-		return $this;
+		return $output;
 	}
 }

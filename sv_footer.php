@@ -53,17 +53,17 @@ class sv_footer extends init {
 				->sv_sidebar
 				->create( $this )
 				->set_ID( 'left' )
-				->set_name( __( 'Footer - Left', $this->get_module_name() ) )
+				->set_title( __( 'Footer - Left', $this->get_module_name() ) )
 				->set_desc( __( 'Widgets in this area will be shown in the left section of the footer.', $this->get_module_name() ) )
 				->load_sidebar()
 				->create( $this )
 				->set_ID( 'center' )
-				->set_name( __( 'Footer - Center', $this->get_module_name() ) )
+				->set_title( __( 'Footer - Center', $this->get_module_name() ) )
 				->set_desc( __( 'Widgets in this area will be shown in the center section of the footer.', $this->get_module_name() ) )
 				->load_sidebar()
 				->create( $this )
 				->set_ID( 'right' )
-				->set_name( __( 'Footer - Right', $this->get_module_name() ) )
+				->set_title( __( 'Footer - Right', $this->get_module_name() ) )
 				->set_desc( __( 'Widgets in this area will be shown in the right section of the footer.', $this->get_module_name() ) )
 				->load_sidebar();
 		}

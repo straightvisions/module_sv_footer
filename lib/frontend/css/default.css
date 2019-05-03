@@ -9,14 +9,41 @@
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
-	margin-left: calc( var( --padding ) * -1 );
-	margin-right: calc( var( --padding ) * -1 );
 	color: #fff;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .sv_100_sv_footer_widgets_bar > * {
 	padding: 10px var( --padding ) 10px var( --padding );
 	flex: 1;
+}
+
+/* Tablet */
+@media ( min-width: 850px ) {
+	.sv_100_sv_footer_widgets_bar {
+		flex-direction: row;
+		max-width: var( --width-mb );
+	}
+
+	.sv_100_sv_footer_widgets_bar > * {
+		padding: 50px var( --padding ) 25px var( --padding );
+	}
+}
+
+/* Desktop */
+@media ( min-width: 1050px ) {
+	.sv_100_sv_footer_widgets_bar {
+		max-width: var( --width-dt );
+	}
+}
+
+/* Large */
+@media ( min-width: 1350px ) {
+	.sv_100_sv_footer_widgets_bar {
+		max-width: var( --width-lg );
+	}
 }
 
 .sv_100_sv_footer_widgets_bar > *:first-child {
@@ -25,15 +52,4 @@
 
 .sv_100_sv_footer_widgets_bar > *:last-child {
 	padding-bottom: 25px;
-}
-
-/* Breakpoints */
-@media ( min-width: 850px ) {
-	.sv_100_sv_footer_widgets_bar {
-		flex-direction: row;
-	}
-
-	.sv_100_sv_footer_widgets_bar > * {
-		padding: 50px var( --padding ) 25px var( --padding );
-	}
 }

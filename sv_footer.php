@@ -29,6 +29,16 @@ class sv_footer extends init {
 
 		$this->register_scripts()->register_sidebars();
 	}
+	
+	protected function is_first_load(): bool {
+		if ( get_option( $this->get_prefix( 'first_load' ) ) ) {
+			return false;
+		} else {
+			add_option( $this->get_prefix( 'first_load' ), true );
+			
+			return true;
+		}
+	}
 
 	protected function register_scripts() :sv_footer {
 		// Register Styles
@@ -66,6 +76,15 @@ class sv_footer extends init {
 				->set_title( __( 'Footer - Right', $this->get_module_name() ) )
 				->set_desc( __( 'Widgets in this area will be shown in the right section of the footer.', $this->get_module_name() ) )
 				->load_sidebar();
+			
+			if ( $this->is_first_load() ) {
+				$widgets 											= get_option( 'sidebars_widgets' );
+				
+				$widgets['sv_100_sv_sidebar_sv_footer_left'] 		= $widgets['sv_100_sv_sidebar_sv_content_frontpage'];
+				$widgets['sv_100_sv_sidebar_sv_content_frontpage'] 	= array();
+				
+				update_option( 'sidebars_widgets', $widgets );
+			}
 		}
 
 		return $this;

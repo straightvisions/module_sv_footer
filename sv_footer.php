@@ -76,12 +76,14 @@ class sv_footer extends init {
 				->set_title( __( 'Footer - Right', $this->get_module_name() ) )
 				->set_desc( __( 'Widgets in this area will be shown in the right section of the footer.', $this->get_module_name() ) )
 				->load_sidebar();
+
+			var_dump(get_option( 'sidebars_widgets' ));
 			
 			if ( $this->is_first_load() ) {
 				$widgets 											= get_option( 'sidebars_widgets' );
-				
-				$widgets['sv_100_sv_sidebar_sv_footer_left'] 		= $widgets['sv_100_sv_sidebar_sv_content_frontpage'];
-				$widgets['sv_100_sv_sidebar_sv_content_frontpage'] 	= array();
+				$widgets['sv_100_sv_sidebar_sv_footer_left'] 		= array( 'recent-posts-1' );
+				$widgets['sv_100_sv_sidebar_sv_footer_center'] 		= array( 'recent-comments-1' );
+				$widgets['sv_100_sv_sidebar_sv_footer_right'] 		= array( 'meta-1' );
 				
 				update_option( 'sidebars_widgets', $widgets );
 			}

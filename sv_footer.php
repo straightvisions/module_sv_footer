@@ -76,8 +76,6 @@ class sv_footer extends init {
 				->set_title( __( 'Footer - Right', $this->get_module_name() ) )
 				->set_desc( __( 'Widgets in this area will be shown in the right section of the footer.', $this->get_module_name() ) )
 				->load_sidebar();
-
-			var_dump(get_option( 'sidebars_widgets' ));
 			
 			if ( $this->is_first_load() ) {
 				$widgets 											= get_option( 'sidebars_widgets' );

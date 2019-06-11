@@ -34,9 +34,13 @@ class sv_footer extends init {
 	}
 	
 	public function add_widgets() {
-		$this->add_widget_to_sidebar( 'recent-posts', 'sv_100_sv_sidebar_sv_footer_left' )
-			 ->add_widget_to_sidebar( 'recent-comments', 'sv_100_sv_sidebar_sv_footer_center' )
-			 ->add_widget_to_sidebar( 'meta', 'sv_100_sv_sidebar_sv_footer_right' );
+		$this->get_root()->sv_sidebar
+			->clear_sidebar( 'sv_100_sv_sidebar_sv_footer_left' )
+			->clear_sidebar( 'sv_100_sv_sidebar_sv_footer_center' )
+			->clear_sidebar( 'sv_100_sv_sidebar_sv_footer_right' )
+			->add_widget_to_sidebar( 'recent-posts', 'sv_100_sv_sidebar_sv_footer_left' )
+			->add_widget_to_sidebar( 'recent-comments', 'sv_100_sv_sidebar_sv_footer_center' )
+			->add_widget_to_sidebar( 'meta', 'sv_100_sv_sidebar_sv_footer_right' );
 	}
 
 	protected function register_scripts() :sv_footer {

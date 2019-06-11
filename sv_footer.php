@@ -30,7 +30,7 @@ class sv_footer extends init {
 		$this->register_scripts()->register_sidebars();
 		
 		// Action Hooks & Filter
-		$this->is_first_load() ? add_action( 'widgets_init', array( $this, 'add_widgets' ) ) : false;
+		$this->is_first_load() ? add_action( 'wp_loaded', array( $this, 'add_widgets' ) ) : false;
 	}
 	
 	public function add_widgets() {

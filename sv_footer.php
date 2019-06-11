@@ -28,16 +28,15 @@ class sv_footer extends init {
 		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
 
 		$this->register_scripts()->register_sidebars();
+		
+		// Action Hooks & Filter
+		$this->is_first_load() ? add_action( 'widgets_init', array( $this, 'add_widgets' ) ) : false;
 	}
 	
-	protected function is_first_load(): bool {
-		if ( get_option( $this->get_prefix( 'first_load' ) ) ) {
-			return false;
-		} else {
-			add_option( $this->get_prefix( 'first_load' ), true );
-			
-			return true;
-		}
+	public function add_widgets() {
+		$this->add_widget_to_sidebar( 'recent-posts', 'sv_100_sv_sidebar_sv_footer_left' )
+			 ->add_widget_to_sidebar( 'recent-comments', 'sv_100_sv_sidebar_sv_footer_center' )
+			 ->add_widget_to_sidebar( 'meta', 'sv_100_sv_sidebar_sv_footer_right' );
 	}
 
 	protected function register_scripts() :sv_footer {
@@ -76,15 +75,6 @@ class sv_footer extends init {
 				->set_title( __( 'Footer - Right', $this->get_module_name() ) )
 				->set_desc( __( 'Widgets in this area will be shown in the right section of the footer.', $this->get_module_name() ) )
 				->load_sidebar();
-			
-			if ( $this->is_first_load() ) {
-				$widgets 											= get_option( 'sidebars_widgets' );
-				$widgets['sv_100_sv_sidebar_sv_footer_left'] 		= array( 'recent-posts-1' );
-				$widgets['sv_100_sv_sidebar_sv_footer_center'] 		= array( 'recent-comments-1' );
-				$widgets['sv_100_sv_sidebar_sv_footer_right'] 		= array( 'meta-1' );
-				
-				update_option( 'sidebars_widgets', $widgets );
-			}
 		}
 
 		return $this;

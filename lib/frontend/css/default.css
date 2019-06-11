@@ -1,7 +1,7 @@
 /* General */
 .sv_100_sv_footer {
-	background: rgb( var( --color-bg-highlight ) );
-	color: rgb( var( --color-contrast ) );
+	background: rgb( var( --sv-100-color-bg-highlight ) );
+	color: rgb( var( --sv-100-color-contrast ) );
 }
 
 /* Widgets Bar*/

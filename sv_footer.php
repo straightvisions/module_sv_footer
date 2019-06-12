@@ -18,11 +18,11 @@ class sv_footer extends init {
 
 	public function init() {
 		// Translates the module
-		load_theme_textdomain( $this->get_module_name(), $this->get_path( 'languages' ) );
+		load_theme_textdomain( 'sv_footer', $this->get_path( 'languages' ) );
 
 		// Module Info
 		$this->set_module_title( 'SV Footer' );
-		$this->set_module_desc( __( 'This module gives the ability to display the footer via the "[sv_footer]" shortcode.', $this->get_module_name() ) );
+		$this->set_module_desc( __( 'This module gives the ability to display the footer via the "[sv_footer]" shortcode.', 'sv_footer' ) );
 
 		// Shortcodes
 		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
@@ -66,18 +66,18 @@ class sv_footer extends init {
 				->sv_sidebar
 				->create( $this )
 				->set_ID( 'left' )
-				->set_title( __( 'Footer - Left', $this->get_module_name() ) )
-				->set_desc( __( 'Widgets in this area will be shown in the left section of the footer.', $this->get_module_name() ) )
+				->set_title( __( 'Footer - Left', 'sv_footer' ) )
+				->set_desc( __( 'Widgets in this area will be shown in the left section of the footer.', 'sv_footer' ) )
 				->load_sidebar()
 				->create( $this )
 				->set_ID( 'center' )
-				->set_title( __( 'Footer - Center', $this->get_module_name() ) )
-				->set_desc( __( 'Widgets in this area will be shown in the center section of the footer.', $this->get_module_name() ) )
+				->set_title( __( 'Footer - Center', 'sv_footer' ) )
+				->set_desc( __( 'Widgets in this area will be shown in the center section of the footer.', 'sv_footer' ) )
 				->load_sidebar()
 				->create( $this )
 				->set_ID( 'right' )
-				->set_title( __( 'Footer - Right', $this->get_module_name() ) )
-				->set_desc( __( 'Widgets in this area will be shown in the right section of the footer.', $this->get_module_name() ) )
+				->set_title( __( 'Footer - Right', 'sv_footer' ) )
+				->set_desc( __( 'Widgets in this area will be shown in the right section of the footer.', 'sv_footer' ) )
 				->load_sidebar();
 		}
 

@@ -12,17 +12,10 @@ namespace sv_100;
  */
 
 class sv_footer extends init {
-	public function __construct() {
-
-	}
-
 	public function init() {
 		// Module Info
 		$this->set_module_title( 'SV Footer' );
 		$this->set_module_desc( __( 'This module gives the ability to display the footer via the "[sv_footer]" shortcode.', 'sv_100' ) );
-
-		// Shortcodes
-		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
 
 		$this->register_scripts()->register_sidebars();
 		
@@ -81,7 +74,7 @@ class sv_footer extends init {
 		return $this;
 	}
 
-	public function shortcode( $settings, $content = '' ) :string {
+	public function load( $settings = array() ) :string {
 		$settings								= shortcode_atts(
 			array(
 				'inline'						=> true

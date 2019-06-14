@@ -15,7 +15,7 @@ class sv_footer extends init {
 	public function init() {
 		// Module Info
 		$this->set_module_title( 'SV Footer' );
-		$this->set_module_desc( __( 'This module gives the ability to display the footer via the "[sv_footer]" shortcode.', 'sv_100' ) );
+		$this->set_module_desc( __( 'This module gives the ability to display the footer via the "[sv_footer]" shortcode.', 'straightvisions_100' ) );
 
 		$this->register_scripts()->register_sidebars();
 		
@@ -56,18 +56,18 @@ class sv_footer extends init {
 				->sv_sidebar
 				->create( $this )
 				->set_ID( 'left' )
-				->set_title( __( 'Footer - Left', 'sv_100' ) )
-				->set_desc( __( 'Widgets in this area will be shown in the left section of the footer.', 'sv_100' ) )
+				->set_title( __( 'Footer - Left', 'straightvisions_100' ) )
+				->set_desc( __( 'Widgets in this area will be shown in the left section of the footer.', 'straightvisions_100' ) )
 				->load_sidebar()
 				->create( $this )
 				->set_ID( 'center' )
-				->set_title( __( 'Footer - Center', 'sv_100' ) )
-				->set_desc( __( 'Widgets in this area will be shown in the center section of the footer.', 'sv_100' ) )
+				->set_title( __( 'Footer - Center', 'straightvisions_100' ) )
+				->set_desc( __( 'Widgets in this area will be shown in the center section of the footer.', 'straightvisions_100' ) )
 				->load_sidebar()
 				->create( $this )
 				->set_ID( 'right' )
-				->set_title( __( 'Footer - Right', 'sv_100' ) )
-				->set_desc( __( 'Widgets in this area will be shown in the right section of the footer.', 'sv_100' ) )
+				->set_title( __( 'Footer - Right', 'straightvisions_100' ) )
+				->set_desc( __( 'Widgets in this area will be shown in the right section of the footer.', 'straightvisions_100' ) )
 				->load_sidebar();
 		}
 

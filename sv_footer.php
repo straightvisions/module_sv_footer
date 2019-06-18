@@ -38,14 +38,12 @@ class sv_footer extends init {
 		$this->scripts_queue['default']        = static::$scripts
 			->create( $this )
 			->set_ID( 'default' )
-			->set_path( 'lib/frontend/css/default.css' )
-			->set_inline( true );
+			->set_path( 'lib/frontend/css/default.css' );
 
 		$this->scripts_queue['sidebar_default'] = static::$scripts
 			->create( $this )
 			->set_ID( 'sidebar_default' )
-			->set_path( 'lib/frontend/css/sidebar_default.css' )
-			->set_inline( true );
+			->set_path( 'lib/frontend/css/sidebar_default.css' );
 
 		return $this;
 	}
@@ -77,7 +75,7 @@ class sv_footer extends init {
 	public function load( $settings = array() ) :string {
 		$settings								= shortcode_atts(
 			array(
-				'inline'						=> true
+				'inline'						=> false,
 			),
 			$settings,
 			$this->get_module_name()

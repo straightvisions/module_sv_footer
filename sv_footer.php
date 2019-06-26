@@ -38,7 +38,7 @@ class sv_footer extends init {
 			$this->get_setting()
 				 ->set_ID( 'activate' )
 				 ->set_title( __( 'Activate Footer', 'straightvisions_100' ) )
-				 ->set_description( __( 'Activate or deactivate the footer', 'straightvisions_100' ) )
+				 ->set_description( __( 'Activate or deactivate the footer.', 'straightvisions_100' ) )
 				 ->load_type( 'checkbox' );
 		
 		return $this;

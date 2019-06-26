@@ -53,3 +53,53 @@
 .sv_100_sv_footer_widgets_bar > *:last-child {
 	padding-bottom: 25px;
 }
+
+/* Credits Bar */
+.sv_100_sv_footer_credits {
+	background-color: #0e0f10;
+}
+
+.sv_100_sv_footer_credits_info {
+	display: flex;
+	color: #989898;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px 20px;
+	font-size: .8rem;
+	align-items: center;
+	line-height: 140%;
+}
+
+.sv_100_sv_footer_credits_info span {
+	margin-right: 3px;
+}
+
+.sv_100_sv_footer_credits_info a {
+	color: #ffffff;
+	text-decoration: none;
+	transition: color .25s ease-in-out;
+}
+
+.sv_100_sv_footer_credits_info a:hover,
+.sv_100_sv_footer_credits_info a:focus {
+	color: #d3d3d3;
+}
+
+@media ( min-width: 850px ) {
+	.sv_100_sv_footer_credits_info {
+		max-width: var( --width-mb );
+	}
+}
+
+@media ( min-width: 1050px ) {
+	.sv_100_sv_footer_credits_info {
+		max-width: var( --width-dt );
+	}
+}
+
+@media ( min-width: 1350px ) {
+	.sv_100_sv_footer_credits_info {
+		max-width: var( --width-lg );
+	}
+}

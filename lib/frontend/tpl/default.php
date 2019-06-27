@@ -24,7 +24,7 @@
 <div class="<?php echo $this->get_prefix( 'credits' ); ?>">
 	<div class="<?php echo $this->get_prefix( 'credits_info' ); ?>">
 		<?php
-			echo '<span>' . __( 'Theme developed by', 'straightvisions_100' ) . '</span>';
+			echo '<span>' . __( 'Theme developed by', 'straightvisions-100' ) . '</span>';
 			echo wp_get_theme()->display( 'Author' );
 		?>
 	</div>

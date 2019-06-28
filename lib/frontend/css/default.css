@@ -1,11 +1,11 @@
 /* General */
-.sv_100_sv_footer {
-	background: rgb( var( --sv-100-color-bg-highlight ) );
-	color: rgb( var( --sv-100-color-contrast ) );
+.sv100_sv_footer {
+	background: rgb( var( --sv100_sv_color-bg-highlight ) );
+	color: rgb( var( --sv100_sv_color-contrast ) );
 }
 
 /* Widgets Bar*/
-.sv_100_sv_footer_widgets_bar {
+.sv100_sv_footer_widgets_bar {
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
@@ -15,51 +15,51 @@
 	margin-right: auto;
 }
 
-.sv_100_sv_footer_widgets_bar > * {
+.sv100_sv_footer_widgets_bar > * {
 	padding: 10px var( --padding ) 10px var( --padding );
 	flex: 1;
 }
 
 /* Tablet */
 @media ( min-width: 850px ) {
-	.sv_100_sv_footer_widgets_bar {
+	.sv100_sv_footer_widgets_bar {
 		flex-direction: row;
 		max-width: var( --width-mb );
 	}
 
-	.sv_100_sv_footer_widgets_bar > * {
+	.sv100_sv_footer_widgets_bar > * {
 		padding: 50px var( --padding ) 25px var( --padding );
 	}
 }
 
 /* Desktop */
 @media ( min-width: 1050px ) {
-	.sv_100_sv_footer_widgets_bar {
+	.sv100_sv_footer_widgets_bar {
 		max-width: var( --width-dt );
 	}
 }
 
 /* Large */
 @media ( min-width: 1350px ) {
-	.sv_100_sv_footer_widgets_bar {
+	.sv100_sv_footer_widgets_bar {
 		max-width: var( --width-lg );
 	}
 }
 
-.sv_100_sv_footer_widgets_bar > *:first-child {
+.sv100_sv_footer_widgets_bar > *:first-child {
 	padding-top: 50px;
 }
 
-.sv_100_sv_footer_widgets_bar > *:last-child {
+.sv100_sv_footer_widgets_bar > *:last-child {
 	padding-bottom: 25px;
 }
 
 /* Credits Bar */
-.sv_100_sv_footer_credits {
+.sv100_sv_footer_credits {
 	background-color: #0e0f10;
 }
 
-.sv_100_sv_footer_credits_info {
+.sv100_sv_footer_credits_info {
 	display: flex;
 	color: #989898;
 	width: 100%;
@@ -71,35 +71,35 @@
 	line-height: 140%;
 }
 
-.sv_100_sv_footer_credits_info span {
+.sv100_sv_footer_credits_info span {
 	margin-right: 3px;
 }
 
-.sv_100_sv_footer_credits_info a {
+.sv100_sv_footer_credits_info a {
 	color: #ffffff;
 	text-decoration: none;
 	transition: color .25s ease-in-out;
 }
 
-.sv_100_sv_footer_credits_info a:hover,
-.sv_100_sv_footer_credits_info a:focus {
+.sv100_sv_footer_credits_info a:hover,
+.sv100_sv_footer_credits_info a:focus {
 	color: #d3d3d3;
 }
 
 @media ( min-width: 850px ) {
-	.sv_100_sv_footer_credits_info {
+	.sv100_sv_footer_credits_info {
 		max-width: var( --width-mb );
 	}
 }
 
 @media ( min-width: 1050px ) {
-	.sv_100_sv_footer_credits_info {
+	.sv100_sv_footer_credits_info {
 		max-width: var( --width-dt );
 	}
 }
 
 @media ( min-width: 1350px ) {
-	.sv_100_sv_footer_credits_info {
+	.sv100_sv_footer_credits_info {
 		max-width: var( --width-lg );
 	}
 }

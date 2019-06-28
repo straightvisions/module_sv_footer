@@ -23,14 +23,10 @@ class sv_footer extends init {
 		$this->set_section_type( 'settings' );
 		$this->get_root()->add_section( $this );
 		
-		$this->load_settings();
+		$this->load_settings()->register_scripts()->register_sidebars();
 		
-		if($this->s['activate']->run_type()->get_data() === '1') {
-			$this->register_scripts()->register_sidebars();
-			
-			// Action Hooks & Filter
-			$this->is_first_load() ? add_action( 'wp_loaded', array( $this, 'add_widgets' ) ) : false;
-		}
+		// Action Hooks & Filter
+		$this->is_first_load() ? add_action( 'wp_loaded', array( $this, 'add_widgets' ) ) : false;
 	}
 	
 	protected function load_settings(): sv_footer {
@@ -44,33 +40,33 @@ class sv_footer extends init {
 		return $this;
 	}
 		
-		public function add_widgets() {
+	public function add_widgets() {
 		$this->get_module( 'sv_sidebar' )
-			->clear_sidebar( 'sv100_sv_sidebar_sv_footer_left' )
-			->clear_sidebar( 'sv100_sv_sidebar_sv_footer_center' )
-			->clear_sidebar( 'sv100_sv_sidebar_sv_footer_right' )
-			->add_widget_to_sidebar( 'recent-posts', 'sv100_sv_sidebar_sv_footer_left' )
-			->add_widget_to_sidebar( 'recent-comments', 'sv100_sv_sidebar_sv_footer_center' )
-			->add_widget_to_sidebar( 'meta', 'sv100_sv_sidebar_sv_footer_right' );
+			 ->clear_sidebar( 'sv100_sv_sidebar_sv_footer_left' )
+			 ->clear_sidebar( 'sv100_sv_sidebar_sv_footer_center' )
+			 ->clear_sidebar( 'sv100_sv_sidebar_sv_footer_right' )
+			 ->add_widget_to_sidebar( 'recent-posts', 'sv100_sv_sidebar_sv_footer_left' )
+			 ->add_widget_to_sidebar( 'recent-comments', 'sv100_sv_sidebar_sv_footer_center' )
+			 ->add_widget_to_sidebar( 'meta', 'sv100_sv_sidebar_sv_footer_right' );
 	}
 
-	protected function register_scripts() :sv_footer {
+	protected function register_scripts(): sv_footer {
 		// Register Styles
-		$this->scripts_queue['default']        = static::$scripts
-			->create( $this )
-			->set_ID( 'default' )
-			->set_path( 'lib/frontend/css/default.css' );
+		$this->scripts_queue['default'] =
+			static::$scripts->create( $this )
+							->set_ID( 'default' )
+							->set_path( 'lib/frontend/css/default.css' );
 
-		$this->scripts_queue['sidebar_default'] = static::$scripts
-			->create( $this )
-			->set_ID( 'sidebar_default' )
-			->set_path( 'lib/frontend/css/sidebar_default.css' );
+		$this->scripts_queue['sidebar_default'] =
+			static::$scripts->create( $this )
+							->set_ID( 'sidebar_default' )
+							->set_path( 'lib/frontend/css/sidebar_default.css' );
 
 		return $this;
 	}
 
-	protected function register_sidebars() :sv_footer {
-		if ( isset( $this->get_root()->sv_sidebar ) ) {
+	protected function register_sidebars(): sv_footer {
+		if ( $this->get_module( 'sv_sidebar' ) ) {
 			$this->get_module( 'sv_sidebar' )
 				->create( $this )
 				->set_ID( 'left' )
@@ -92,14 +88,14 @@ class sv_footer extends init {
 		return $this;
 	}
 
-	public function load( $settings = array() ) :string {
-		if($this->s['activate']->run_type()->get_data() != '1') {
+	public function load( $settings = array() ): string {
+		if ( $this->get_setting( 'activate' )->run_type()->get_data() !== '1' ) {
 			return '';
 		}
 		
-		$settings								= shortcode_atts(
+		$settings				= shortcode_atts(
 			array(
-				'inline'						=> false,
+				'inline'		=> false,
 			),
 			$settings,
 			$this->get_module_name()
@@ -109,7 +105,7 @@ class sv_footer extends init {
 	}
 
 	// Handles the routing of the templates
-	protected function router( array $settings ) :string {
+	protected function router( array $settings ): string {
 		$template = array(
 			'name'      => 'default',
 			'scripts'   => array(

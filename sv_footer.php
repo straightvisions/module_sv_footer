@@ -26,7 +26,8 @@
 			$this->load_settings()->register_scripts()->register_sidebars();
 			
 			// Action Hooks & Filter
-			$this->is_first_load() ? add_action( 'wp_loaded', array( $this, 'add_widgets' ) ) : false;
+			// @todo: make this optional and move it to companion plugins -> demo content is plugin territory!
+			// $this->is_first_load() ? add_action( 'wp_loaded', array( $this, 'add_widgets' ) ) : false;
 		}
 		
 		protected function load_settings(): sv_footer {

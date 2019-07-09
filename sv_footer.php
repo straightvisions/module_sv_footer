@@ -18,9 +18,11 @@
 			$this->set_module_desc( __( 'This module gives the ability to display the footer via the "[sv_footer]" shortcode.', 'sv100' ) );
 			
 			// Section Info
-			$this->set_section_title( __( 'Footer', 'sv100' ) );
-			$this->set_section_desc( __( 'Settings', 'sv100' ) );
-			$this->set_section_type( 'settings' );
+			$this->set_section_title( __( 'Footer', 'sv100' ) )
+			->set_section_desc( __( 'Settings', 'sv100' ) )
+			->set_section_type( 'settings' )
+			->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) );
+			
 			$this->get_root()->add_section( $this );
 			
 			$this->load_settings()->register_scripts()->register_sidebars();
@@ -37,6 +39,8 @@
 					 ->set_title( __( 'Activate Footer', 'sv100' ) )
 					 ->set_description( __( 'Activate or deactivate the footer.', 'sv100' ) )
 					 ->load_type( 'checkbox' );
+			
+			$this->settings_draft_font()->settings_draft_background();
 			
 			return $this;
 		}
@@ -114,6 +118,12 @@
 					$this->scripts_queue[ 'sidebar_default' ]->set_inline( $settings['inline'] ),
 				),
 			);
+			
+			$this->scripts_queue[ 'inline_config' ] = static::$scripts->create( $this )
+				->set_ID('inline_config')
+				->set_path( 'lib/frontend/css/config.php' )
+				->set_inline(true)
+				->set_is_enqueued();
 	
 			return $this->load_template( $template, $settings );
 		}

@@ -40,7 +40,21 @@
 					 ->set_description( __( 'Activate or deactivate the footer.', 'sv100' ) )
 					 ->load_type( 'checkbox' );
 			
-			$this->settings_draft_font()->settings_draft_background();
+			// Text Settings
+			$this->get_settings_component( 'font_family','font_family' );
+			$this->get_settings_component( 'font_size','font_size', 16 );
+			$this->get_settings_component( 'text_color','text_color', '#85868c' );
+			$this->get_settings_component( 'line_height','line_height', 23 );
+			
+			// Background Settings
+			$this->get_settings_component( 'bg_color','background_color', '#1e1f22' );
+			$this->get_settings_component( 'bg_image','background_image' );
+			$this->get_settings_component( 'bg_media_size','background_media_size', 'medium_large' );
+			$this->get_settings_component( 'bg_position','background_position', 'center top' );
+			$this->get_settings_component( 'bg_size','background_size', 0 );
+			$this->get_settings_component( 'bg_fit','background_fit', 'cover' );
+			$this->get_settings_component( 'bg_repeat','background_repeat', 'no-repeat' );
+			$this->get_settings_component( 'bg_attachment','background_attachment', 'fixed' );
 			
 			return $this;
 		}

@@ -20,6 +20,16 @@
 			?>
 		</div>
 
+		<h3 class="divider"><?php _e( 'Widgets Title', 'sv100' ); ?></h3>
+		<div class="sv_setting_flex">
+			<?php
+				echo $module->get_settings_component( 'font_family_widget_title' )->run_type()->form();
+				echo $module->get_settings_component( 'font_size_widget_title' )->run_type()->form();
+				echo $module->get_settings_component( 'line_height_widget_title' )->run_type()->form();
+				echo $module->get_settings_component( 'text_color_widget_title' )->run_type()->form();
+			?>
+		</div>
+
 		<h3 class="divider"><?php _e( 'Background Settings', 'sv100' ); ?></h3>
 		<div class="sv_setting_flex">
 			<?php
@@ -39,6 +49,14 @@
 			<?php
 				echo $module->get_settings_component( 'bg_repeat' )->run_type()->form();
 				echo $module->get_settings_component( 'bg_attachment' )->run_type()->form();
+			?>
+		</div>
+
+		<h3 class="divider"><?php _e( 'Color Settings', 'sv100' ); ?></h3>
+		<div class="sv_setting_flex">
+			<?php
+				echo $module->get_setting( 'bg_color_widget' )->run_type()->form();
+				echo $module->get_setting( 'color_highlight' )->run_type()->form();
 			?>
 		</div>
 		<?php

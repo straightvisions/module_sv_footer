@@ -26,10 +26,6 @@
 			$this->get_root()->add_section( $this );
 			
 			$this->load_settings()->register_scripts()->register_sidebars();
-			
-			// Action Hooks & Filter
-			// @todo: make this optional and move it to companion plugins -> demo content is plugin territory!
-			// $this->is_first_load() ? add_action( 'wp_loaded', array( $this, 'add_widgets' ) ) : false;
 		}
 		
 		protected function load_settings(): sv_footer {
@@ -43,8 +39,14 @@
 			// Text Settings
 			$this->get_settings_component( 'font_family','font_family' );
 			$this->get_settings_component( 'font_size','font_size', 16 );
-			$this->get_settings_component( 'text_color','text_color', '#85868c' );
+			$this->get_settings_component( 'text_color','text_color', '#ffffff' );
 			$this->get_settings_component( 'line_height','line_height', 23 );
+			
+			// Widgets Title
+			$this->get_settings_component( 'font_family_widget_title','font_family' );
+			$this->get_settings_component( 'font_size_widget_title','font_size', 32 );
+			$this->get_settings_component( 'text_color_widget_title','text_color', '#85868c' );
+			$this->get_settings_component( 'line_height_widget_title','line_height', 48 );
 			
 			// Background Settings
 			$this->get_settings_component( 'bg_color','background_color', '#1e1f22' );
@@ -56,17 +58,22 @@
 			$this->get_settings_component( 'bg_repeat','background_repeat', 'no-repeat' );
 			$this->get_settings_component( 'bg_attachment','background_attachment', 'fixed' );
 			
+			// Color Settings
+			$this->s['bg_color_widget'] =
+				$this->get_setting()
+					 ->set_ID( 'bg_color_widget' )
+					 ->set_title( __( 'Widget Background Color', 'sv100' ) )
+					 ->set_default_value( '#353639' )
+					 ->load_type( 'color' );
+			$this->s['color_highlight'] =
+				$this->get_setting()
+					 ->set_ID( 'color_highlight' )
+					 ->set_title( __( 'Highlight Color', 'sv100' ) )
+					 ->set_description( __( 'This color is used to highlight elements, like links (on hover/focus).', 'sv100' ) )
+					 ->set_default_value( '#358ae9' )
+					 ->load_type( 'color' );
+			
 			return $this;
-		}
-		
-		public function add_widgets() {
-			$this->get_module( 'sv_sidebar' )
-				 ->clear_sidebar( 'sv100_sv_sidebar_sv_footer_left' )
-				 ->clear_sidebar( 'sv100_sv_sidebar_sv_footer_center' )
-				 ->clear_sidebar( 'sv100_sv_sidebar_sv_footer_right' )
-				 ->add_widget_to_sidebar( 'recent-posts', 'sv100_sv_sidebar_sv_footer_left' )
-				 ->add_widget_to_sidebar( 'recent-comments', 'sv100_sv_sidebar_sv_footer_center' )
-				 ->add_widget_to_sidebar( 'meta', 'sv100_sv_sidebar_sv_footer_right' );
 		}
 	
 		protected function register_scripts(): sv_footer {

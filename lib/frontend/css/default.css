@@ -68,14 +68,14 @@
 	margin-right: 3px;
 }
 
-.sv100_sv_footer_credits_info a {
+.sv100_sv_footer_credits .sv100_sv_footer_credits_info > a {
 	color: #ffffff;
 	text-decoration: none;
 	transition: color .25s ease-in-out;
 }
 
-.sv100_sv_footer_credits_info a:hover,
-.sv100_sv_footer_credits_info a:focus {
+.sv100_sv_footer_credits .sv100_sv_footer_credits_info > a:hover,
+.sv100_sv_footer_credits .sv100_sv_footer_credits_info > a:focus {
 	color: #d3d3d3;
 }
 

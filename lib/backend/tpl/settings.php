@@ -56,7 +56,7 @@
 		<div class="sv_setting_flex">
 			<?php
 				echo $module->get_setting( 'bg_color_widget' )->run_type()->form();
-				echo $module->get_setting( 'color_highlight' )->run_type()->form();
+				echo $module->get_settings_component( 'highlight_color' )->run_type()->form();
 			?>
 		</div>
 		<?php

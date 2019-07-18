@@ -37,7 +37,7 @@
 	
 	// Color Settings
 	$bg_color_widget			= $script->get_parent()->get_setting( 'bg_color_widget' )->run_type()->get_data();
-	$color_highlight			= $script->get_parent()->get_setting( 'color_highlight' )->run_type()->get_data();
+	$highlight_color			= $script->get_parent()->get_setting( 'highlight_color' )->run_type()->get_data();
 ?>
 
 /* General */
@@ -71,7 +71,7 @@
 
 .sv100_sv_footer a:hover,
 .sv100_sv_footer a:focus {
-	color: <?php echo $color_highlight; ?>;
+	color: <?php echo $highlight_color; ?>;
 }
 
 /* Widgets */
@@ -98,7 +98,7 @@
 .sv100_sv_footer_widgets_bar .widget ul li:focus,
 .sv100_sv_footer_widgets_bar .widget_nav_menu ul > li.menu-item-has-children:hover > a,
 .sv100_sv_footer_widgets_bar .widget_nav_menu ul > li.menu-item-has-children:focus > a {
-	background-color: <?php echo $color_highlight; ?>;
+	background-color: <?php echo $highlight_color; ?>;
 }
 
 .sv100_sv_footer_widgets_bar .widget select,
@@ -123,5 +123,5 @@
 .sv100_sv_footer_widgets_bar .widget_tag_cloud a:focus,
 .sv100_sv_footer_widgets_bar .widget_rss ul li > a:hover,
 .sv100_sv_footer_widgets_bar .widget_rss ul li > a:focus {
-	color: <?php echo $color_highlight; ?>;
+	color: <?php echo $highlight_color; ?>;
 }

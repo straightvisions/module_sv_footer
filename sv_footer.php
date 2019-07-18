@@ -55,15 +55,11 @@
 			$this->get_settings_component( 'bg_attachment','background_attachment', 'fixed' );
 			
 			// Color Settings
+			$this->get_settings_component( 'highlight_color','highlight_color', '#358ae9' );
+			
 			$this->get_setting( 'bg_color_widget' )
 				 ->set_title( __( 'Widget Background Color', 'sv100' ) )
 				 ->set_default_value( '#353639' )
-				 ->load_type( 'color' );
-			
-			$this->get_setting( 'color_highlight' )
-				 ->set_title( __( 'Highlight Color', 'sv100' ) )
-				 ->set_description( __( 'This color is used to highlight elements, like links (on hover/focus).', 'sv100' ) )
-				 ->set_default_value( '#358ae9' )
 				 ->load_type( 'color' );
 			
 			return $this;

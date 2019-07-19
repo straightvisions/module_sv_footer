@@ -14,12 +14,12 @@
 	class sv_footer extends init {
 		public function init() {
 			$this->set_module_title( 'SV Footer' )
-				 ->set_module_desc( __( 'This module gives the ability to display the footer via the "[sv_footer]" shortcode.', 'sv100' ) )
+				 ->set_module_desc( __( 'Manages the footer.', 'sv100' ) )
 				 ->load_settings()
 				 ->register_scripts()
 				 ->register_sidebars()
 				 ->set_section_title( __( 'Footer', 'sv100' ) )
-				 ->set_section_desc( __( 'Settings', 'sv100' ) )
+				 ->set_section_desc( __( 'Sidebar & Color settings', 'sv100' ) )
 				 ->set_section_type( 'settings' )
 				 ->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) )
 				 ->get_root()
@@ -28,7 +28,7 @@
 		
 		protected function load_settings(): sv_footer {
 			$this->get_setting( 'activate' )
-				 ->set_title( __( 'Activate Footer', 'sv100' ) )
+				 ->set_title( __( 'Activate footer', 'sv100' ) )
 				 ->set_description( __( 'Activate or deactivate the footer.', 'sv100' ) )
 				 ->load_type( 'checkbox' );
 			
@@ -58,7 +58,7 @@
 			$this->get_settings_component( 'highlight_color','highlight_color', '#358ae9' );
 			
 			$this->get_setting( 'bg_color_widget' )
-				 ->set_title( __( 'Widget Background Color', 'sv100' ) )
+				 ->set_title( __( 'Widget background color', 'sv100' ) )
 				 ->set_default_value( '#353639' )
 				 ->load_type( 'color' );
 			
@@ -87,17 +87,17 @@
 					 ->create( $this )
 					 ->set_ID( 'left' )
 					 ->set_title( __( 'Footer - Left', 'sv100' ) )
-					 ->set_desc( __( 'Widgets in this area will be shown in the left section of the footer.', 'sv100' ) )
+					 ->set_desc( __( 'Widgets in this sidebar will be shown in the left section of the footer.', 'sv100' ) )
 					 ->load_sidebar()
 					 ->create( $this )
 					 ->set_ID( 'center' )
 					 ->set_title( __( 'Footer - Center', 'sv100' ) )
-					 ->set_desc( __( 'Widgets in this area will be shown in the center section of the footer.', 'sv100' ) )
+					 ->set_desc( __( 'Widgets in this sidebar will be shown in the center section of the footer.', 'sv100' ) )
 					 ->load_sidebar()
 					 ->create( $this )
 					 ->set_ID( 'right' )
 					 ->set_title( __( 'Footer - Right', 'sv100' ) )
-					 ->set_desc( __( 'Widgets in this area will be shown in the right section of the footer.', 'sv100' ) )
+					 ->set_desc( __( 'Widgets in this sidebar will be shown in the right section of the footer.', 'sv100' ) )
 					 ->load_sidebar();
 			}
 	

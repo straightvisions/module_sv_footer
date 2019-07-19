@@ -10,7 +10,7 @@
 			?>
 		</div>
 		
-		<h3 class="divider"><?php _e( 'Text Settings', 'sv100' ); ?></h3>
+		<h3 class="divider"><?php _e( 'Text', 'sv100' ); ?></h3>
 		<div class="sv_setting_flex">
 			<?php
 				echo $module->get_settings_component( 'font_family' )->run_type()->form();
@@ -20,7 +20,7 @@
 			?>
 		</div>
 
-		<h3 class="divider"><?php _e( 'Widgets Title', 'sv100' ); ?></h3>
+		<h3 class="divider"><?php _e( 'Widgets title', 'sv100' ); ?></h3>
 		<div class="sv_setting_flex">
 			<?php
 				echo $module->get_settings_component( 'font_family_widget_title' )->run_type()->form();
@@ -30,7 +30,7 @@
 			?>
 		</div>
 
-		<h3 class="divider"><?php _e( 'Background Settings', 'sv100' ); ?></h3>
+		<h3 class="divider"><?php _e( 'Background', 'sv100' ); ?></h3>
 		<div class="sv_setting_flex">
 			<?php
 				echo $module->get_settings_component( 'bg_color' )->run_type()->form();
@@ -52,7 +52,7 @@
 			?>
 		</div>
 
-		<h3 class="divider"><?php _e( 'Color Settings', 'sv100' ); ?></h3>
+		<h3 class="divider"><?php _e( 'Colors', 'sv100' ); ?></h3>
 		<div class="sv_setting_flex">
 			<?php
 				echo $module->get_setting( 'bg_color_widget' )->run_type()->form();

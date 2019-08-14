@@ -1,4 +1,9 @@
 /* Widgets  - General */
+.sv100_sv_footer_widgets_bar > .sv100_sv_sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
 .sv100_sv_footer_widgets_bar .widget {
     margin-bottom: 30px;
 }

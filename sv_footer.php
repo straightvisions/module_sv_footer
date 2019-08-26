@@ -13,7 +13,7 @@
 	
 	class sv_footer extends init {
 		public function init() {
-			$this->set_module_title( 'SV Footer' )
+			$this->set_module_title( __( 'SV Footer', 'sv100' ) )
 				 ->set_module_desc( __( 'Manages the footer.', 'sv100' ) )
 				 ->load_settings()
 				 ->register_scripts()

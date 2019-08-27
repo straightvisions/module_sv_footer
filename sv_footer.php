@@ -27,11 +27,6 @@
 		}
 		
 		protected function load_settings(): sv_footer {
-			$this->get_setting( 'activate' )
-				 ->set_title( __( 'Activate footer', 'sv100' ) )
-				 ->set_description( __( 'Activate or deactivate the footer.', 'sv100' ) )
-				 ->load_type( 'checkbox' );
-			
 			// Text Settings
 			$this->get_settings_component( 'font_family','font_family' );
 			$this->get_settings_component( 'font_size','font_size', 16 );
@@ -72,6 +67,9 @@
 	
 			$this->get_script( 'sidebar_default' )
 				 ->set_path( 'lib/frontend/css/sidebar_default.css' );
+
+			$this->get_script( 'credits' )
+				->set_path( 'lib/frontend/css/credits.css' );
 			
 			// Inline Config
 			$this->get_script( 'inline_config' )
@@ -103,12 +101,25 @@
 	
 			return $this;
 		}
-	
-		public function load( $settings = array() ): string {
-			if ( $this->get_setting( 'activate' )->run_type()->get_data() !== '1' ) {
-				return '';
+		public function has_footer_content(): bool{
+			if(!$this->get_module( 'sv_sidebar' )){
+				return false;
 			}
-			
+
+			$i = false;
+			if($this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name() . '_left' ) ) ){
+				$i = true;
+			}
+			if($this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name() . '_center' ) ) ){
+				$i = true;
+			}
+			if($this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name() . '_right' ) ) ){
+				$i = true;
+			}
+
+			return $i;
+		}
+		public function load( $settings = array() ): string {
 			$settings				= shortcode_atts(
 				array(
 					'inline'		=> false,
@@ -130,12 +141,11 @@
 				),
 			);
 			
-			if ( $this->get_module( 'sv_sidebar' )
-				&& empty( $this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name() . '_left' ) ) )
-				&& empty( $this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name() . '_center' ) ) )
-				&& empty( $this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name() . '_right' ) ) )
-			) {
+			if ( $this->has_footer_content() ) {
 				$template['scripts'] = array( $this->get_script( 'default' )->set_inline( $settings['inline'] ) );
+			}
+			if(apply_filters( $this->get_prefix('credits'), true)) {
+				$template['scripts'][] = $this->get_script( 'credits' )->set_inline( $settings['inline'] );
 			}
 			
 			$this->get_script( 'inline_config' )->set_is_enqueued();

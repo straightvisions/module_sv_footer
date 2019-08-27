@@ -1,0 +1,49 @@
+/* Credits Bar */
+.sv100_sv_footer_credits {
+	background-color: #0e0f10;
+}
+
+.sv100_sv_footer_credits_info {
+	display: flex;
+	color: #989898;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px 20px;
+	font-size: .8rem;
+	align-items: center;
+	line-height: 140%;
+}
+
+.sv100_sv_footer_credits_info span {
+	margin-right: 3px;
+}
+
+.sv100_sv_footer_credits .sv100_sv_footer_credits_info > a {
+	color: #ffffff;
+	text-decoration: none;
+	transition: color .25s ease-in-out;
+}
+
+.sv100_sv_footer_credits .sv100_sv_footer_credits_info > a:hover,
+.sv100_sv_footer_credits .sv100_sv_footer_credits_info > a:focus {
+	color: #d3d3d3;
+}
+
+@media ( min-width: 850px ) {
+	.sv100_sv_footer_credits_info {
+		max-width: var( --sv100_sv_common-max-width-mb );
+	}
+}
+
+@media ( min-width: 1050px ) {
+	.sv100_sv_footer_credits_info {
+		max-width: var( --sv100_sv_common-max-width-dt );
+	}
+}
+
+@media ( min-width: 1350px ) {
+	.sv100_sv_footer_credits_info {
+		max-width: var( --sv100_sv_common-max-width-lg );
+	}
+}

@@ -14,4 +14,3 @@ if(apply_filters( $this->get_prefix('credits'), true)) {
 	</div>
 	<?php
 }
-?>

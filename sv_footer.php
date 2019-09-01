@@ -133,17 +133,18 @@
 	
 		// Handles the routing of the templates
 		protected function router( array $settings ): string {
-			$template = array(
-				'name'      => 'default',
-				'scripts'   => array(
-					$this->get_script( 'default' )->set_inline( $settings['inline'] ),
-					$this->get_script( 'sidebar_default' )->set_inline( $settings['inline'] ),
-				),
-			);
+			$template = array();
 			
 			if ( $this->has_footer_content() ) {
-				$template['scripts'] = array( $this->get_script( 'default' )->set_inline( $settings['inline'] ) );
+				$template = array(
+					'name'      => 'default',
+					'scripts'   => array(
+						$this->get_script( 'default' )->set_inline( $settings['inline'] ),
+						$this->get_script( 'sidebar_default' )->set_inline( $settings['inline'] ),
+					),
+				);
 			}
+			
 			if(apply_filters( $this->get_prefix('credits'), true)) {
 				$template['scripts'][] = $this->get_script( 'credits' )->set_inline( $settings['inline'] );
 			}

@@ -18,6 +18,7 @@
 	.sv100_sv_footer_widgets_bar {
 		flex-direction: row;
 		max-width: var( --sv100_sv_common-max-width-mb );
+		flex-wrap:wrap;
 	}
 
 	.sv100_sv_footer_widgets_bar > * {

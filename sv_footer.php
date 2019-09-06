@@ -156,15 +156,18 @@
 	
 		// Loads the templates
 		protected function load_template( array $template, array $settings ) :string {
-			ob_start();
-			foreach ( $template['scripts'] as $script ) {
-				$script->set_is_enqueued();
+			$output	= '';
+			if($template['scripts']) {
+				ob_start();
+				foreach ($template['scripts'] as $script) {
+					$script->set_is_enqueued();
+				}
+
+				// Loads the template
+				include ( $this->get_path('lib/frontend/tpl/' . $template['name'] . '.php' ) );
+				$output							        = ob_get_contents();
+				ob_end_clean();
 			}
-	
-			// Loads the template
-			include ( $this->get_path('lib/frontend/tpl/' . $template['name'] . '.php' ) );
-			$output							        = ob_get_contents();
-			ob_end_clean();
 	
 			return $output;
 		}

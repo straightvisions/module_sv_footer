@@ -6,12 +6,12 @@
 
 .sv100_sv_footer_widgets_bar .widget {
     margin: 0 auto 30px;
-    width: calc(var(--sv100_sv_common-max-width-txt) / 2);
-    max-width:100%;
+    width: 100%;
+    max-width: calc( var( --sv100_sv_common-max-width-txt ) / 2 );
 }
 @media ( min-width: 850px ) {
     .sv100_sv_footer_widgets_bar .widget {
-        width: auto;
+        max-width: 100%;
     }
 }
 
@@ -34,16 +34,14 @@
     text-decoration: none;
     cursor: pointer;
     align-items: center;
+    margin-left: -12px;
     transition: color .25s ease, background-color .25s ease;
 }
 
 .sv100_sv_footer_widgets_bar .widget ul li a {
     flex: 1;
-    padding: 8px 8px 12px 0;
+    padding: 8px 12px;
     transition: color .25s ease, background-color .25s ease;
-}
-.sv100_sv_footer_widgets_bar .widget ul li a:first-child{
-    padding-top:0;
 }
 
 .sv100_sv_footer_widgets_bar .widget ul li .post-date {

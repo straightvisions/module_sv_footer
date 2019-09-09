@@ -1,5 +1,5 @@
 <?php
-if(apply_filters( $this->get_prefix('credits'), true)) {
+if ( apply_filters( $this->get_prefix('credits'), true ) ) {
 	$text = '<span>'
 			. __( 'Theme by', 'sv100' )
 			. '</span><a href="' . wp_get_theme()->display( 'AuthorURI' )

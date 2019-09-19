@@ -47,7 +47,7 @@
 .sv100_sv_footer_widgets_bar .widget a,
 .sv100_sv_footer_widgets_bar .widget a:hover,
 .sv100_sv_footer_widgets_bar .widget a:focus {
-	font-family: <?php echo ( $font ? '"' . $font['family'] . '", ' : '' ); ?>sans-serif;
+	<?php echo ( $font ? 'font-family: "' . $font['family'] . '", sans-serif;' : '' ); ?>
 	font-weight: <?php echo ( $font ? $font['weight'] : '400' ); ?>;
 	font-size: <?php echo $font_size; ?>px;
 	color: <?php echo $text_color; ?>;
@@ -76,7 +76,7 @@
 
 /* Widgets */
 .sv100_sv_footer_widgets_bar .widget h3 {
-	font-family: <?php echo ( $font_widget_title ? '"' . $font_widget_title['family'] . '", ' : '' ); ?>sans-serif;
+	<?php echo ( $font_widget_title ? 'font-family: "' . $font_widget_title['family'] . '", sans-serif;' : '' ); ?>
 	font-weight: <?php echo ( $font_widget_title ? $font_widget_title['weight'] : '400' ); ?>;
 	font-size: <?php echo $font_size_widget_title; ?>px;
 	color: <?php echo $text_color_widget_title; ?>;

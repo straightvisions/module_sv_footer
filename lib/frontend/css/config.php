@@ -130,19 +130,20 @@
 <?php
 if ( count( $script->get_parent()->get_module( 'sv_sidebar' )->get_sidebars( $script->get_parent() ) ) > 0 ) {
 	foreach ( $script->get_parent()->get_module( 'sv_sidebar' )->get_sidebars( $script->get_parent() ) as $sidebar ) {
-		$value = $script->get_parent()->get_setting( $sidebar['id'] )->run_type()->get_data();
+		$alignment = $script->get_parent()->get_setting( $sidebar['id'] )->run_type()->get_data();
 		
-		switch ( $value ) {
+		switch ( $alignment ) {
 			case 'left':
-				$value = 'flex-start';
+				$align_items 	= 'flex-start';
 				break;
 			case 'right':
-				$value = 'flex-end';
+				$align_items 	= 'flex-end';
 				break;
 		}
 		
 		echo '.' . $sidebar['id'] . '{';
-		echo 'align-items: ' . $value . ';';
+		echo 'text-align: ' . $alignment . ';';
+		echo 'align-items: ' . $align_items . ';';
 		echo '}';
 	}
 }

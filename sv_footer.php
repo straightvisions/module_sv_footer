@@ -31,13 +31,13 @@
 			$this->get_settings_component( 'font_family','font_family' );
 			$this->get_settings_component( 'font_size','font_size', 16 );
 			$this->get_settings_component( 'text_color','text_color', '#ffffff' );
-			$this->get_settings_component( 'line_height','line_height', 23 );
+			$this->get_settings_component( 'line_height','line_height' );
 			
 			// Widgets Title
 			$this->get_settings_component( 'font_family_widget_title','font_family' );
 			$this->get_settings_component( 'font_size_widget_title','font_size', 32 );
 			$this->get_settings_component( 'text_color_widget_title','text_color', '#85868c' );
-			$this->get_settings_component( 'line_height_widget_title','line_height', 48 );
+			$this->get_settings_component( 'line_height_widget_title','line_height' );
 			
 			// Background Settings
 			$this->get_settings_component( 'bg_color','background_color', '#1e1f22' );

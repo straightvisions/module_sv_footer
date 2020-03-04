@@ -37,7 +37,7 @@
 	font-weight: <?php echo ( $font ? $font['weight'] : '400' ); ?>;
 	font-size: <?php echo $font_size; ?>px;
 	color: rgba(<?php echo $text_color; ?>);
-	line-height: <?php echo $line_height; ?>px;
+	line-height: <?php echo $line_height; ?>;
 }
 
 .sv100_sv_footer {
@@ -66,7 +66,7 @@
 	font-weight: <?php echo ( $font_widget_title ? $font_widget_title['weight'] : '400' ); ?>;
 	font-size: <?php echo $font_size_widget_title; ?>px;
 	color: rgba(<?php echo $text_color_widget_title; ?>);
-	line-height: <?php echo $line_height_widget_title; ?>px;
+	line-height: <?php echo $line_height_widget_title; ?>;
 }
 
 .sv100_sv_footer_widgets_bar .widget ul li,

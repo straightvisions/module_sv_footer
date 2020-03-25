@@ -28,29 +28,128 @@
 		
 		protected function load_settings(): sv_footer {
 			// Text Settings
-			$this->get_settings_component( 'font_family','font_family' );
-			$this->get_settings_component( 'font_size','font_size', 16 );
-			$this->get_settings_component( 'text_color','text_color', '#ffffff' );
-			$this->get_settings_component( 'line_height','line_height' );
+			$this->get_setting( 'font_family' )
+				 ->set_title( __( 'Font Family', 'sv100' ) )
+				 ->set_description( __( 'Choose a font for your text.', 'sv100' ) )
+				 ->set_options( $this->get_module( 'sv_webfontloader' )->get_font_options() )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'font_size' )
+				 ->set_title( __( 'Font Size', 'sv100' ) )
+				 ->set_description( __( 'Font Size in pixel.', 'sv100' ) )
+				 ->set_default_value( 16 )
+				 ->load_type( 'number' );
+
+			$this->get_setting( 'line_height' )
+				 ->set_title( __( 'Line Height', 'sv100' ) )
+				 ->set_description( __( 'Set line height as multiplier or with a unit.', 'sv100' ) )
+				 ->set_default_value( '1.3' )
+				 ->load_type( 'text' );
+
+			$this->get_setting( 'text_color' )
+				 ->set_title( __( 'Text Color', 'sv100' ) )
+				 ->set_default_value( '#ffffff' )
+				 ->load_type( 'color' );
 			
 			// Widgets Title
-			$this->get_settings_component( 'font_family_widget_title','font_family' );
-			$this->get_settings_component( 'font_size_widget_title','font_size', 32 );
-			$this->get_settings_component( 'text_color_widget_title','text_color', '#85868c' );
-			$this->get_settings_component( 'line_height_widget_title','line_height' );
+			$this->get_setting( 'font_family_widget_title' )
+				 ->set_title( __( 'Font Family', 'sv100' ) )
+				 ->set_description( __( 'Choose a font for your text.', 'sv100' ) )
+				 ->set_options( $this->get_module( 'sv_webfontloader' )->get_font_options() )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'font_size_widget_title' )
+				 ->set_title( __( 'Font Size', 'sv100' ) )
+				 ->set_description( __( 'Font Size in pixel.', 'sv100' ) )
+				 ->set_default_value( 32 )
+				 ->load_type( 'number' );
+
+			$this->get_setting( 'line_height_widget_title' )
+				 ->set_title( __( 'Line Height', 'sv100' ) )
+				 ->set_description( __( 'Set line height as multiplier or with a unit.', 'sv100' ) )
+				 ->set_default_value( '1.3' )
+				 ->load_type( 'text' );
+
+			$this->get_setting( 'text_color_widget_title' )
+				 ->set_title( __( 'Text Color', 'sv100' ) )
+				 ->set_default_value( '#85868c' )
+				 ->load_type( 'color' );
 			
 			// Background Settings
-			$this->get_settings_component( 'bg_color','background_color', '#1e1f22' );
-			$this->get_settings_component( 'bg_image','background_image' );
-			$this->get_settings_component( 'bg_media_size','background_media_size', 'medium_large' );
-			$this->get_settings_component( 'bg_position','background_position', 'center top' );
-			$this->get_settings_component( 'bg_size','background_size', 0 );
-			$this->get_settings_component( 'bg_fit','background_fit', 'cover' );
-			$this->get_settings_component( 'bg_repeat','background_repeat', 'no-repeat' );
-			$this->get_settings_component( 'bg_attachment','background_attachment', 'fixed' );
+			$this->get_setting( 'bg_color' )
+				 ->set_title( __( 'Background Color', 'sv100' ) )
+				 ->set_default_value( '#1e1f22' )
+				 ->load_type( 'color' );
+
+			$this->get_setting( 'bg_image' )
+				 ->set_title( __( 'Background Image', 'sv100' ) )
+				 ->load_type( 'upload' );
+
+			$this->get_setting( 'bg_media_size' )
+				 ->set_title( __( 'Background Media Size', 'sv100' ) )
+				 ->set_default_value( 'large' )
+				 ->set_options( array_combine( get_intermediate_image_sizes(), get_intermediate_image_sizes() ) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_position' )
+				 ->set_title( __( 'Background Position', 'sv100' ) )
+				 ->set_default_value( 'center top' )
+				 ->set_placeholder( 'center top' )
+				 ->load_type( 'text' );
+
+			$this->get_setting( 'bg_size' )
+				 ->set_title( __( 'Background Size', 'sv100' ) )
+				 ->set_description( '<p>' . __( 'Background Size in Pixel', 'sv100' ) . '<br>
+				 ' . __( 'If disabled Background Fit will take effect.', 'sv100' ) . '</p>
+				 <p><strong>' . __( '0 = Disabled', 'sv100' ) . '</strong></p>' )
+				 ->set_default_value( 0 )
+				 ->set_placeholder( '0 ' )
+				 ->set_min( 0 )
+				 ->load_type( 'number' );
+
+			$this->get_setting( 'bg_fit' )
+				 ->set_title( __( 'Background Fit', 'sv100' ) )
+				 ->set_description( __( 'Defines how the background image aspect ratio behaves.', 'sv100' ) )
+				 ->set_default_value( 'cover' )
+				 ->set_options( array(
+					'cover' 	=> __( 'Cover', 'sv100' ),
+					'contain' 	=> __( 'Contain', 'sv100' )
+				) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_repeat' )
+				 ->set_title( __( 'Background Repeat', 'sv100' ) )
+				 ->set_default_value( 'no-repeat' )
+				 ->set_options( array(
+					'no-repeat' => __( 'No Repeat', 'sv100' ),
+					'repeat' 	=> __( 'Repeat', 'sv100' ),
+					'repeat-x' 	=> __( 'Repeat Horizontally', 'sv100' ),
+					'repeat-y' 	=> __( 'Repeat Vertically', 'sv100' ),
+					'space' 	=> __( 'Space', 'sv100' ),
+					'round' 	=> __( 'Round', 'sv100' ),
+					'initial' 	=> __( 'Initial', 'sv100' ),
+					'inherit' 	=> __( 'Inherit', 'sv100' )
+				) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_attachment' )
+				 ->set_title( __( 'Background Attachment', 'sv100' ) )
+				 ->set_default_value( 'fixed' )
+				 ->set_options( array(
+					'fixed' 	=> __( 'fixed', 'sv100' ),
+					'scroll' 	=> __( 'scroll', 'sv100' ),
+					'local' 	=> __( 'local', 'sv100' ),
+					'initial' 	=> __( 'initial', 'sv100' ),
+					'inherit' 	=> __( 'inherit', 'sv100' )
+				) )
+				 ->load_type( 'select' );
 			
 			// Color Settings
-			$this->get_settings_component( 'highlight_color','highlight_color', '#358ae9' );
+			$this->get_setting( 'highlight_color' )
+				 ->set_title( __( 'Highlight Color', 'sv100' ) )
+				 ->set_description( __( 'This color is used for highlighting elements, like links on hover/focus.', 'sv100' ) )
+				 ->set_default_value( '#358ae9' )
+				 ->load_type( 'color' );
 			
 			$this->get_setting( 'bg_color_widget' )
 				 ->set_title( __( 'Widget background color', 'sv100' ) )

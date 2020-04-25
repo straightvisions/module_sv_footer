@@ -36,7 +36,7 @@
 /* Large */
 @media ( min-width: 1350px ) {
 	.sv100_sv_footer_widgets_bar {
-		max-width: var( --sv100_sv_common-max-width-lg );
+		max-width: var( --sv100_sv_common-max-width-alignwide );
 	}
 }
 
@@ -57,7 +57,7 @@
 .sv100_sv_footer_widgets_bar .widget {
     margin: 0 auto 30px;
     width: 100%;
-    max-width: calc( var( --sv100_sv_common-max-width-txt ) / 2 );
+    max-width: calc( var( --sv100_sv_common-max-width-text ) / 2 );
 }
 @media ( min-width: 850px ) {
     .sv100_sv_footer_widgets_bar .widget {

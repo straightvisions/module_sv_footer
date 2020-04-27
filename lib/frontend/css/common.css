@@ -1,0 +1,28 @@
+/* ### Mobile ### */
+.sv100_sv_footer_wrapper {
+	width: 100%;
+	min-height: 100px;
+	top: 0;
+	z-index: 900;
+}
+.sv100_sv_footer .sv100_sv_footer_bar {
+    display: flex;
+    align-items: center;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.sv100_sv_footer .sv100_sv_footer_bar > *{
+	display: flex;
+	flex: 1 1 0;
+    margin: 0 15px;
+}
+
+.sv100_sv_footer .sv100_sv_footer_bar > *:first-child{
+    margin-left: 0;
+}
+
+.sv100_sv_footer .sv100_sv_footer_bar > *:last-child{
+    margin-right: 0;
+}

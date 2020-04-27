@@ -1,17 +1,6 @@
-<footer class="<?php echo $this->get_prefix(); ?>">
-	<div class="<?php echo $this->get_prefix( 'widgets_bar' ); ?> ">
-		<?php
-		echo $this->get_module( 'sv_sidebar' )
-			? $this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name() . '_left' ) )
-			: '';
-
-		echo $this->get_module( 'sv_sidebar' )
-			? $this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name() . '_center' ) )
-			: '';
-
-		echo $this->get_module( 'sv_sidebar' )
-			? $this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name() . '_right' ) )
-			: '';
-		?>
-	</div>
-</footer>
+ <?php
+    for($i = 1; $i < 6; $i++){
+        echo $this->get_module( 'sv_sidebar' )
+            ? $this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name() . '_'. $i ) )
+            : '';
+    }

@@ -9,9 +9,9 @@ include( $script->get_parent()->get_path( 'lib/frontend/css/config/footer.php' )
 
 if( $script->get_parent()->get_root()->get_module( 'sv_sidebar' ) ){
 	$check = false;
-	$module = $script->get_parent()->get_root()->get_module( 'sv_sidebar' );
+	$sidebar = $script->get_parent()->get_root()->get_module( 'sv_sidebar' );
 	for($i = 1; $i < 6 ;$i++){
-		$check = $module->load( array( 'id' => $script->get_parent()->get_module_name().'_1' ) ) ? true : false;
+		$check = $sidebar->load( array( 'id' => $script->get_parent()->get_module_name().'_1' ) ) ? true : false;
 	}
 
 	if( $check ){

@@ -1,6 +1,6 @@
 <?php
 
-	// wrapper ---------------------------------------------------------------------------------------------------------
+	// footer ----------------------------------------------------------------------------------------------------------
 	$properties					= array();
 	
 	// Background
@@ -18,26 +18,20 @@
 	if($bg_color) {
 		$properties['background-color'] = $setting->prepare_css_property_responsive(array('mobile'=>$bg_color), 'rgba(', ')');
 	}
-	
-	if($max_width) {
-		$properties['max-width'] = $setting->prepare_css_property($max_width, '', '');
+
+	if($max_width_container) {
+		$properties['max-width'] = $setting->prepare_css_property($max_width_container, '', '');
 	}
 
-	echo $setting->build_css(
-		'.sv100_sv_footer',
-		$properties
-	);
-
-	// footer bar-------------------------------------------------------------------------------------------------------
 	// Margin
 	if($margin) {
 		$imploded		= false;
 		foreach($margin as $breakpoint => $val) {
-			$top = (isset($val['top']) && strlen($val['top']) > 0) ? $val['top'] : false;
-			$right = (isset($val['right']) && strlen($val['right']) > 0) ? $val['right'] : false;
-			$bottom = (isset($val['bottom']) && strlen($val['bottom']) > 0) ? $val['bottom'] : false;
-			$left = (isset($val['left']) && strlen($val['left']) > 0) ? $val['left'] : false;
-	
+			$top 		= (isset($val['top']) && strlen($val['top']) > 0) ? $val['top'] : false;
+			$right 		= (isset($val['right']) && strlen($val['right']) > 0) ? $val['right'] : false;
+			$bottom 	= (isset($val['bottom']) && strlen($val['bottom']) > 0) ? $val['bottom'] : false;
+			$left 		= (isset($val['left']) && strlen($val['left']) > 0) ? $val['left'] : false;
+
 			if($top !== false || $right !== false || $bottom !== false || $left !== false) {
 				$imploded[$breakpoint] = $top . ' ' . $right . ' ' . $bottom . ' ' . $left;
 			}
@@ -47,8 +41,20 @@
 		}
 	}
 
+	echo $setting->build_css(
+		'.sv100_sv_footer',
+		$properties
+	);
+
+	// footer bar-------------------------------------------------------------------------------------------------------
+	$properties = array();
+	if($max_width_bar) {
+		$properties['max-width'] = $setting->prepare_css_property($max_width_bar, '', '');
+	}
+
 	// Padding
 	// @todo: same as margin, refactor to avoid doubled code
+
 	if($padding) {
 		$imploded		= false;
 		foreach($padding as $breakpoint => $val) {
@@ -66,7 +72,6 @@
 		}
 	}
 
-	$properties = array();
 	$properties['justify-content']  = $setting->prepare_css_property_responsive($alignment);
 	$properties['flex-direction']   = $setting->get_breakpoints();
 
@@ -98,7 +103,7 @@
 		}
 
 		if($key === 'mobile' && isset($container_alignment[$key]) && !in_array($container_alignment[$key] , ['spread'])){
-			//$value = '1 1 auto';
+			$value = '1 1 auto; width:100%;'; // inject flex hack fix
 		}
 	}
 
@@ -107,7 +112,7 @@
 	foreach( $properties['margin'] as $key => &$value){
 		$value = '0 15px';
 		if($key === 'mobile' && isset($container_alignment[$key]) && in_array($container_alignment[$key] , ['center'])){
-			$value = '0';
+			$value = '0 0 15px  0';
 		}
 	}
 

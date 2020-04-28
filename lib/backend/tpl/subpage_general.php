@@ -4,23 +4,25 @@
     <h3 class="divider"><?php _e( 'Position & Alignment', 'sv100' ); ?></h3>
     <div class="sv_setting_flex">
 		<?php
-		echo $module->get_setting( 'max_width' )->form();
+		echo $module->get_setting( 'max_width_container' )->form();
+		echo $module->get_setting( 'max_width_bar' )->form();
+		?>
+    </div>
+    <div class="sv_setting_flex">
+		<?php
 		echo $module->get_setting( 'position' )->form();
 		echo $module->get_setting( 'alignment' )->form();
 		?>
     </div>
-    <?php
-	if ( $count = count( $module->get_module( 'sv_sidebar' )->get_sidebars( $module ) ) > 0 ) {
-    ?>
+
     <h3 class="divider"><?php _e( 'Columns Content Alignments', 'sv100' ); ?></h3>
     <div class="sv_setting_flex">
         <?php
-        foreach ( $module->get_module( 'sv_sidebar' )->get_sidebars( $module ) as $sidebar ) {
-            echo $module->get_setting( $sidebar['id'] )->form();
-        }
+		for($i = 1; $i < 6; $i++){
+			echo $module->get_setting( 'sidebar_'.$i.'_alignment' )->form();
+		}
         ?>
     </div>
-    <?php } ?>
 
     <h3 class="divider"><?php _e( 'Text', 'sv100' ); ?></h3>
     <div class="sv_setting_flex">

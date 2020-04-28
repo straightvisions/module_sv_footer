@@ -7,7 +7,7 @@
 }
 .sv100_sv_footer .sv100_sv_footer_bar {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 	height: 100%;
 	margin-left: auto;
 	margin-right: auto;
@@ -25,4 +25,14 @@
 
 .sv100_sv_footer .sv100_sv_footer_bar > *:last-child{
     margin-right: 0;
+}
+
+.sv100_sv_footer .sv100_sv_footer_bar .widget_nav_menu ul{
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+
+.sv100_sv_footer .sv100_sv_footer_bar .widget_nav_menu ul.sub-menu{
+    display:none;
 }

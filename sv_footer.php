@@ -41,6 +41,20 @@
 				->set_is_responsive(true)
 				->load_type( 'select' );
 
+			// sidebar settings
+			for($i = 1; $i < 6; $i++){
+				$this->get_setting( 'sidebar_'.$i.'_alignment' )
+					->set_title( __( 'Footer - '.$i, 'sv100' ) )
+					->set_options( array(
+						'flex-start'	=> __( 'Left', 'sv100' ),
+						'center'		=> __( 'Center', 'sv100' ),
+						'flex-end'		=> __( 'Right', 'sv100' )
+					) )
+					->set_default_value( 'left' )
+					->set_is_responsive(true)
+					->load_type( 'select' );
+			}
+
 			// Text Settings
 			$this->get_setting( 'font_family' )
 				->set_title( __( 'Font Family', 'sv100' ) )
@@ -106,16 +120,23 @@
 				->set_is_responsive(true)
 				->load_type( 'color' );
 
-			$this->get_setting( 'max_width' )
-				->set_title( __( 'Max Width', 'sv100' ) )
-				->set_description( __( 'Set the max width of the Header', 'sv100' ) )
+			$this->get_setting( 'max_width_container' )
+				->set_title( __( 'Max Width Footer Container', 'sv100' ) )
+				->set_description( __( 'Set the max width of the Footer container', 'sv100' ) )
+				->set_options( $this->get_module('sv_common')->get_max_width_options() )
+				->set_default_value( '100%' )
+				->load_type( 'select' );
+
+			$this->get_setting( 'max_width_bar' )
+				->set_title( __( 'Max Width Footer Inner Content', 'sv100' ) )
+				->set_description( __( 'Set the max width of the Footer inner content', 'sv100' ) )
 				->set_options( $this->get_module('sv_common')->get_max_width_options() )
 				->set_default_value( '100%' )
 				->load_type( 'select' );
 
 			$this->get_setting( 'position' )
 				->set_title( __( 'Position', 'sv100' ) )
-				->set_description( __( 'The header bar behavior when scrolling down the page.', 'sv100' ) )
+				->set_description( __( 'The footer bar behavior when scrolling down the page.', 'sv100' ) )
 				->set_options( array(
 					'relative'		=> __( 'Static', 'sv100' ),
 					'absolute'		=> __( 'Absolute', 'sv100' ),
@@ -128,6 +149,13 @@
 
 			$this->get_setting('margin')
 				->set_title(__('Margin', 'sv100'))
+				->set_default_value(array(
+					'top' => '15px',
+					'right' => 'auto',
+					'bottom' => '0',
+					'left' => 'auto',
+					)
+				)
 				->set_is_responsive(true)
 				->load_type('margin');
 
@@ -135,9 +163,9 @@
 				->set_title(__('Padding', 'sv100'))
 				->set_is_responsive(true)
 				->set_default_value( array(
-					'top' => '15px',
+					'top' => '30px',
 					'right' => '15px',
-					'bottom' => '15px',
+					'bottom' => '30px',
 					'left' => '15px',
 				) )
 				->load_type('margin');
@@ -148,11 +176,11 @@
 	
 		protected function register_scripts(): sv_footer {
 			// Register Styles
-			$this->get_script( 'sidebar' )
+			$this->get_script( 'common' )
 				->set_path( 'lib/frontend/css/common.css' );
 
-			$this->get_script( 'sidebar' )
-				 ->set_path( 'lib/frontend/css/sidebar.css' );
+			$this->get_script( 'sidebars' )
+				 ->set_path( 'lib/frontend/css/sidebars.css' );
 
 			$this->get_script( 'credits' )
 				->set_path( 'lib/frontend/css/credits.css' );
@@ -245,7 +273,8 @@
 							'name'      => 'default',
 							'scripts'   => array(
 								$this->get_script( 'common' )->set_inline( $settings['inline'] ),
-								$this->get_script( 'sidebar' )->set_inline( $settings['inline'] )
+								$this->get_script( 'sidebars' )->set_inline( $settings['inline'] ),
+								$this->get_script( 'credits' )->set_inline( $settings['inline'] ),
 							),
 						);
 						break;
@@ -255,7 +284,8 @@
 					'name'      => 'default',
 					'scripts'   => array(
 						$this->get_script( 'common' )->set_inline( $settings['inline'] ),
-						$this->get_script( 'sidebar' )->set_inline( $settings['inline'] )
+						$this->get_script( 'sidebars' )->set_inline( $settings['inline'] ),
+						$this->get_script( 'credits' )->set_inline( $settings['inline'] ),
 					),
 				);
 			}

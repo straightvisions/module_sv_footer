@@ -13,6 +13,14 @@
 	flex: 1;
 }
 
+.sv100_sv_footer_widgets_bar .sv100_sv_sidebar{
+    flex-direction: column;
+}
+
+.sv100_sv_footer_widgets_bar .sv100_sv_sidebar .widget_media_image{
+    margin-bottom:15px;
+}
+
 .sv100_sv_footer .sv100_sv_footer_bar h1,
 .sv100_sv_footer .sv100_sv_footer_bar h2,
 .sv100_sv_footer .sv100_sv_footer_bar h3,

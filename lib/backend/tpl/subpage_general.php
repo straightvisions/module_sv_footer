@@ -27,7 +27,7 @@
     <h3 class="divider"><?php _e( 'Text', 'sv100' ); ?></h3>
     <div class="sv_setting_flex">
         <?php
-            echo $module->get_setting( 'font_family' )->form();
+            echo $module->get_setting( 'font' )->form();
             echo $module->get_setting( 'font_size' )->form();
             echo $module->get_setting( 'line_height' )->form();
             echo $module->get_setting( 'text_color' )->form();
@@ -37,7 +37,7 @@
     <h3 class="divider"><?php _e( 'Widgets title', 'sv100' ); ?></h3>
     <div class="sv_setting_flex">
         <?php
-            echo $module->get_setting( 'font_family_widget_title' )->form();
+            echo $module->get_setting( 'font_widget_title' )->form();
             echo $module->get_setting( 'font_size_widget_title' )->form();
             echo $module->get_setting( 'line_height_widget_title' )->form();
             echo $module->get_setting( 'text_color_widget_title' )->form();

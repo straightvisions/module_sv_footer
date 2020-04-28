@@ -56,55 +56,59 @@
 			}
 
 			// Text Settings
-			$this->get_setting( 'font_family' )
+			$this->get_setting( 'font' )
 				->set_title( __( 'Font Family', 'sv100' ) )
 				->set_description( __( 'Choose a font for your text.', 'sv100' ) )
 				->set_options( $this->get_module( 'sv_webfontloader' )->get_font_options() )
+				->set_is_responsive(true)
 				->load_type( 'select' );
 
 			$this->get_setting( 'font_size' )
 				->set_title( __( 'Font Size', 'sv100' ) )
 				->set_description( __( 'Font Size in pixel.', 'sv100' ) )
-				->set_is_responsive(true)
 				->set_default_value( 16 )
+				->set_is_responsive(true)
 				->load_type( 'number' );
 
 			$this->get_setting( 'line_height' )
 				->set_title( __( 'Line Height', 'sv100' ) )
 				->set_description( __( 'Set line height as multiplier or with a unit.', 'sv100' ) )
-				->set_is_responsive(true)
 				->set_default_value( '1.3' )
+				->set_is_responsive(true)
 				->load_type( 'text' );
 
 			$this->get_setting( 'text_color' )
 				->set_title( __( 'Text Color', 'sv100' ) )
 				->set_default_value( '#ffffff' )
+				->set_is_responsive(true)
 				->load_type( 'color' );
 			
 			// Widgets Title
-			$this->get_setting( 'font_family_widget_title' )
+			$this->get_setting( 'font_widget_title' )
 				->set_title( __( 'Font Family', 'sv100' ) )
 				->set_description( __( 'Choose a font for your text.', 'sv100' ) )
 				->set_options( $this->get_module( 'sv_webfontloader' )->get_font_options() )
+				->set_is_responsive(true)
 				->load_type( 'select' );
 
 			$this->get_setting( 'font_size_widget_title' )
 				->set_title( __( 'Font Size', 'sv100' ) )
 				->set_description( __( 'Font Size in pixel.', 'sv100' ) )
-				->set_is_responsive(true)
 				->set_default_value( 32 )
+				->set_is_responsive(true)
 				->load_type( 'number' );
 
 			$this->get_setting( 'line_height_widget_title' )
 				->set_title( __( 'Line Height', 'sv100' ) )
 				->set_description( __( 'Set line height as multiplier or with a unit.', 'sv100' ) )
-				->set_is_responsive(true)
 				->set_default_value( '1.3' )
+				->set_is_responsive(true)
 				->load_type( 'text' );
 
 			$this->get_setting( 'text_color_widget_title' )
 				->set_title( __( 'Text Color', 'sv100' ) )
 				->set_default_value( '#85868c' )
+				->set_is_responsive(true)
 				->load_type( 'color' );
 			
 			// Background Settings

@@ -2,19 +2,19 @@
 
 	// footer ----------------------------------------------------------------------------------------------------------
 	$properties					= array();
-	
+
 	// Background
 	if($position) {
 		$properties['position'] = $setting->prepare_css_property_responsive($position, '', '');
 	}
-	
+
 	echo $setting->build_css(
 		'.sv100_sv_footer_wrapper',
 		$properties
 	);
-	
+
 	$properties					= array();
-	
+
 	if($bg_color) {
 		$properties['background-color'] = $setting->prepare_css_property_responsive(array('mobile'=>$bg_color), 'rgba(', ')');
 	}
@@ -62,7 +62,7 @@
 			$right = (isset($val['right']) && strlen($val['right']) > 0) ? $val['right'] : false;
 			$bottom = (isset($val['bottom']) && strlen($val['bottom']) > 0) ? $val['bottom'] : false;
 			$left = (isset($val['left']) && strlen($val['left']) > 0) ? $val['left'] : false;
-	
+
 			if($top !== false || $right !== false || $bottom !== false || $left !== false) {
 				$imploded[$breakpoint] = $top . ' ' . $right . ' ' . $bottom . ' ' . $left;
 			}

@@ -1,7 +1,5 @@
 <?php
 	// columns outer ---------------------------------------------------------------------------------------------------
-echo "hier";
-
 	for($i = 1; $i < 6; $i++){
 		$properties					= array();
 
@@ -60,13 +58,6 @@ echo "hier";
 	if($line_height_widget_title) {
 		$properties['line-height'] = $setting->prepare_css_property_responsive($line_height_widget_title, '', '');
 	}
-/*
-echo "<pre>";
-
-var_Dump($setting->build_css(
-	'.sv100_sv_footer .sv100_sv_footer_bar *',
-	$properties
-));die;*/
 
 	echo $setting->build_css(
 		'.sv100_sv_footer .sv100_sv_footer_bar .sv100_sv_sidebar > div > .sv100_sv_footer_sv_sidebar',

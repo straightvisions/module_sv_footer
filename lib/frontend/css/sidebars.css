@@ -2,7 +2,7 @@
 .sv100_sv_footer_bar > .sv100_sv_sidebar{
     display: flex;
     flex: 0 1 auto;
-    margin:0 15px 15px 15px;
+    margin:0 15px 15px 15px; /* changes here must be also applied in sidebars config */
     flex-direction: column;
 }
 

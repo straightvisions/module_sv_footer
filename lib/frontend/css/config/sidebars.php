@@ -9,11 +9,35 @@
 	for($i = 1; $i < 6; $i++){
 		$properties					= array();
 
+		if(${'sidebar_'.$i.'_alignment_content'}){
+			// inner stuff
+			$properties['text-align'] 		= array();
+			$properties['justify-content'] 	= $setting->prepare_css_property_responsive(${'sidebar_' . $i . '_alignment_content'});
+
+			// why keeping justify content? -> to have the opportunity to utilise flex alignment for non inline elements later
+			foreach($properties['justify-content'] as $key => $value){
+				if($value === 'flex-start'){
+					$properties['text-align'] = 'left';
+					continue;
+				}
+				if($value === 'flex-end'){
+					$properties['text-align'] = 'right';
+					continue;
+				}
+				if($value === 'center'){
+					$properties['text-align'] = 'center';
+					continue;
+				}
+			}
+
+		}
+
 		if(${'sidebar_'.$i.'_alignment'}){
 
+			// outer stuff
 			$properties['justify-self'] = array(); // row
-			$properties['align-self'] = array(); // column
-			$properties['margin-left'] = array();
+			$properties['align-self'] 	= array(); // column
+			$properties['margin-left'] 	= array();
 			$properties['margin-right'] = array();
 
 			foreach($prepared_properties[$i] as $key => $value) {
@@ -59,7 +83,7 @@
 	}
 
 	// columns inner ---------------------------------------------------------------------------------------------------
-
+	
 	echo $_s->build_css(
 		'.sv100_sv_footer .sv100_sv_footer_bar *',
 		array_merge(

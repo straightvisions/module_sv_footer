@@ -11,17 +11,26 @@
     <div class="sv_setting_flex">
 		<?php
 		echo $module->get_setting( 'position' )->form();
-		echo $module->get_setting( 'alignment' )->form();
+		echo $module->get_setting( 'direction' )->form();
 		?>
     </div>
 
-    <h3 class="divider"><?php _e( 'Columns Content Alignments', 'sv100' ); ?></h3>
+    <h3 class="divider"><?php _e( 'Columns Alignments', 'sv100' ); ?></h3>
     <div class="sv_setting_flex">
         <?php
 		for($i = 1; $i < 6; $i++){
 			echo $module->get_setting( 'sidebar_'.$i.'_alignment' )->form();
 		}
         ?>
+    </div>
+
+    <h3 class="divider"><?php _e( 'Columns Content Alignments', 'sv100' ); ?></h3>
+    <div class="sv_setting_flex">
+		<?php
+		for($i = 1; $i < 6; $i++){
+			echo $module->get_setting( 'sidebar_'.$i.'_alignment_content' )->form();
+		}
+		?>
     </div>
 
     <h3 class="divider"><?php _e( 'Text', 'sv100' ); ?></h3>

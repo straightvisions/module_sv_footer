@@ -72,15 +72,8 @@
 		}
 	}
 
-	$properties['justify-content']  = $setting->prepare_css_property_responsive($alignment);
-	$properties['flex-direction']   = $setting->get_breakpoints();
-
-	// flex direction injection
-	foreach( $properties['flex-direction'] as $key => &$value){
-		$value = 'row';
-		if(isset($alignment[$key]) && $key === 'mobile' && $alignment[$key] === 'center'){
-			$value = 'column';
-		}
+	if($direction){
+		$properties['flex-direction']  = $setting->prepare_css_property_responsive($direction);
 	}
 
 	echo $setting->build_css(
@@ -90,7 +83,7 @@
 	);
 
 	// footer children -------------------------------------------------------------------------------------------------
-
+/*
 	// children flex setup
 	$properties = array();
 	$container_alignment  = $setting->prepare_css_property_responsive($alignment);
@@ -121,4 +114,4 @@
 			: '.sv100_sv_footer .sv100_sv_footer_bar > *',
 		$properties
 	);
-
+*/

@@ -28,16 +28,14 @@
 		}
 		
 		protected function load_settings(): sv_footer {
-			$this->get_setting( 'alignment' )
-				->set_title( __( 'Content Alignment', 'sv100' ) )
+			$this->get_setting( 'direction' )
+				->set_title( __( 'Content Direction', 'sv100' ) )
 				->set_options( array(
-					'flex-start'		=> __( 'Left', 'sv100' ),
-					'center'			=> __( 'Center', 'sv100' ),
-					'flex-end'			=> __( 'Right', 'sv100' ),
-					'space-between'		=> __( 'Space Between', 'sv100' ),
+					'row'		=> __( 'Horizontal', 'sv100' ),
+					'column'	=> __( 'Vertical', 'sv100' ),
 				) )
-				->set_default_value( 'center' )
-				->set_description( __( 'On desktop, space between is the same as center.', 'sv100' ) )
+				->set_default_value( 'row' )
+				->set_description( __( 'The direction of columns.', 'sv100' ) )
 				->set_is_responsive(true)
 				->load_type( 'select' );
 
@@ -50,7 +48,20 @@
 						'center'		=> __( 'Center', 'sv100' ),
 						'flex-end'		=> __( 'Right', 'sv100' )
 					) )
-					->set_default_value( 'left' )
+					->set_default_value( 'flex-start' )
+					->set_is_responsive(true)
+					->load_type( 'select' );
+			}
+
+			for($i = 1; $i < 6; $i++){
+				$this->get_setting( 'sidebar_'.$i.'_alignment_content' )
+					->set_title( __( 'Footer - '.$i, 'sv100' ) )
+					->set_options( array(
+						'flex-start'	=> __( 'Left', 'sv100' ),
+						'center'		=> __( 'Center', 'sv100' ),
+						'flex-end'		=> __( 'Right', 'sv100' ),
+					) )
+					->set_default_value( 'center' )
 					->set_is_responsive(true)
 					->load_type( 'select' );
 			}

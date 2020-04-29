@@ -11,25 +11,7 @@
 
 		if(${'sidebar_'.$i.'_alignment_content'}){
 			// inner stuff
-			$properties['text-align'] 		= array();
-			$properties['justify-content'] 	= $setting->prepare_css_property_responsive(${'sidebar_' . $i . '_alignment_content'});
-
-			// why keeping justify content? -> to have the opportunity to utilise flex alignment for non inline elements later
-			foreach($properties['justify-content'] as $key => $value){
-				if($value === 'flex-start'){
-					$properties['text-align'] = 'left';
-					continue;
-				}
-				if($value === 'flex-end'){
-					$properties['text-align'] = 'right';
-					continue;
-				}
-				if($value === 'center'){
-					$properties['text-align'] = 'center';
-					continue;
-				}
-			}
-
+			$properties['text-align'] 		= $setting->prepare_css_property_responsive(${'sidebar_' . $i . '_alignment_content'});
 		}
 
 		if(${'sidebar_'.$i.'_alignment'}){

@@ -57,9 +57,9 @@
 				$this->get_setting( 'sidebar_'.$i.'_alignment_content' )
 					->set_title( __( 'Footer - '.$i, 'sv100' ) )
 					->set_options( array(
-						'flex-start'	=> __( 'Left', 'sv100' ),
+						'left'	=> __( 'Left', 'sv100' ),
 						'center'		=> __( 'Center', 'sv100' ),
-						'flex-end'		=> __( 'Right', 'sv100' ),
+						'right'		=> __( 'Right', 'sv100' ),
 					) )
 					->set_default_value( 'center' )
 					->set_is_responsive(true)

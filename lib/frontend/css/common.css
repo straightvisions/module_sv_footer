@@ -7,8 +7,6 @@
 }
 .sv100_sv_footer .sv100_sv_footer_bar {
     display: flex;
-    align-items: flex-start;
-	justify-content: space-between;
 	height: 100%;
 	margin-left: auto;
 	margin-right: auto;

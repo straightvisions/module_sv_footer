@@ -2,7 +2,7 @@
 	namespace sv100;
 	
 	/**
-	 * @version         4.000
+	 * @version         4.124
 	 * @author			straightvisions GmbH
 	 * @package			sv100
 	 * @copyright		2019 straightvisions GmbH
@@ -13,73 +13,197 @@
 	
 	class sv_footer extends init {
 		public function init() {
-			// Module Info
-			$this->set_module_title( 'SV Footer' );
-			$this->set_module_desc( __( 'This module gives the ability to display the footer via the "[sv_footer]" shortcode.', 'sv100' ) );
-			
-			// Section Info
-			$this->set_section_title( __( 'Footer', 'sv100' ) )
-			->set_section_desc( __( 'Settings', 'sv100' ) )
-			->set_section_type( 'settings' )
-			->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) );
-			
-			$this->get_root()->add_section( $this );
-			
-			$this->load_settings()->register_scripts()->register_sidebars();
-			
-			// Action Hooks & Filter
-			// @todo: make this optional and move it to companion plugins -> demo content is plugin territory!
-			// $this->is_first_load() ? add_action( 'wp_loaded', array( $this, 'add_widgets' ) ) : false;
+			$this->set_module_title( __( 'SV Footer', 'sv100' ) )
+				->set_module_desc( __( 'Manages the footer.', 'sv100' ) )
+				->load_settings()
+				->register_scripts()
+				->register_sidebars()
+				->set_section_title( __( 'Footer', 'sv100' ) )
+				->set_section_desc( __( 'Sidebar & Color settings', 'sv100' ) )
+				->set_section_type( 'settings' )
+				->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) )
+				->set_section_order(40)
+				->get_root()
+				->add_section( $this );
 		}
 		
 		protected function load_settings(): sv_footer {
-			$this->s['activate'] =
-				$this->get_setting()
-					 ->set_ID( 'activate' )
-					 ->set_title( __( 'Activate Footer', 'sv100' ) )
-					 ->set_description( __( 'Activate or deactivate the footer.', 'sv100' ) )
-					 ->load_type( 'checkbox' );
-			
+			$this->get_setting( 'direction' )
+				->set_title( __( 'Content Direction', 'sv100' ) )
+				->set_options( array(
+					'row'		=> __( 'Horizontal', 'sv100' ),
+					'column'	=> __( 'Vertical', 'sv100' ),
+				) )
+				->set_default_value( 'row' )
+				->set_description( __( 'The direction of columns.', 'sv100' ) )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
+			// sidebar settings
+			for($i = 1; $i < 6; $i++){
+				$this->get_setting( 'sidebar_'.$i.'_alignment' )
+					->set_title( __( 'Footer - '.$i, 'sv100' ) )
+					->set_options( array(
+						'flex-start'	=> __( 'Left', 'sv100' ),
+						'center'		=> __( 'Center', 'sv100' ),
+						'flex-end'		=> __( 'Right', 'sv100' )
+					) )
+					->set_default_value( 'flex-start' )
+					->set_is_responsive(true)
+					->load_type( 'select' );
+			}
+
+			for($i = 1; $i < 6; $i++){
+				$this->get_setting( 'sidebar_'.$i.'_alignment_content' )
+					->set_title( __( 'Footer - '.$i, 'sv100' ) )
+					->set_options( array(
+						'left'	=> __( 'Left', 'sv100' ),
+						'center'		=> __( 'Center', 'sv100' ),
+						'right'		=> __( 'Right', 'sv100' ),
+					) )
+					->set_default_value( 'center' )
+					->set_is_responsive(true)
+					->load_type( 'select' );
+			}
+
 			// Text Settings
-			$this->get_settings_component( 'font_family','font_family' );
-			$this->get_settings_component( 'font_size','font_size', 16 );
-			$this->get_settings_component( 'text_color','text_color', '#85868c' );
-			$this->get_settings_component( 'line_height','line_height', 23 );
+			$this->get_setting( 'font' )
+				->set_title( __( 'Font Family', 'sv100' ) )
+				->set_description( __( 'Choose a font for your text.', 'sv100' ) )
+				->set_options( $this->get_module( 'sv_webfontloader' )->get_font_options() )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
+			$this->get_setting( 'font_size' )
+				->set_title( __( 'Font Size', 'sv100' ) )
+				->set_description( __( 'Font Size in pixel.', 'sv100' ) )
+				->set_default_value( 16 )
+				->set_is_responsive(true)
+				->load_type( 'number' );
+
+			$this->get_setting( 'line_height' )
+				->set_title( __( 'Line Height', 'sv100' ) )
+				->set_description( __( 'Set line height as multiplier or with a unit.', 'sv100' ) )
+				->set_default_value( '1.3' )
+				->set_is_responsive(true)
+				->load_type( 'text' );
+
+			$this->get_setting( 'text_color' )
+				->set_title( __( 'Text Color', 'sv100' ) )
+				->set_default_value( '#ffffff' )
+				->set_is_responsive(true)
+				->load_type( 'color' );
+			
+			// Widgets Title
+			$this->get_setting( 'font_widget_title' )
+				->set_title( __( 'Font Family', 'sv100' ) )
+				->set_description( __( 'Choose a font for your text.', 'sv100' ) )
+				->set_options( $this->get_module( 'sv_webfontloader' )->get_font_options() )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
+			$this->get_setting( 'font_size_widget_title' )
+				->set_title( __( 'Font Size', 'sv100' ) )
+				->set_description( __( 'Font Size in pixel.', 'sv100' ) )
+				->set_default_value( 32 )
+				->set_is_responsive(true)
+				->load_type( 'number' );
+
+			$this->get_setting( 'line_height_widget_title' )
+				->set_title( __( 'Line Height', 'sv100' ) )
+				->set_description( __( 'Set line height as multiplier or with a unit.', 'sv100' ) )
+				->set_default_value( '1.3' )
+				->set_is_responsive(true)
+				->load_type( 'text' );
+
+			$this->get_setting( 'text_color_widget_title' )
+				->set_title( __( 'Text Color', 'sv100' ) )
+				->set_default_value( '#85868c' )
+				->set_is_responsive(true)
+				->load_type( 'color' );
 			
 			// Background Settings
-			$this->get_settings_component( 'bg_color','background_color', '#1e1f22' );
-			$this->get_settings_component( 'bg_image','background_image' );
-			$this->get_settings_component( 'bg_media_size','background_media_size', 'medium_large' );
-			$this->get_settings_component( 'bg_position','background_position', 'center top' );
-			$this->get_settings_component( 'bg_size','background_size', 0 );
-			$this->get_settings_component( 'bg_fit','background_fit', 'cover' );
-			$this->get_settings_component( 'bg_repeat','background_repeat', 'no-repeat' );
-			$this->get_settings_component( 'bg_attachment','background_attachment', 'fixed' );
+			$this->get_setting( 'bg_color' )
+				->set_title( __( 'Background Color', 'sv100' ) )
+				->set_default_value( '30,31,34,1' )
+				->load_type( 'color' );
+
+			// Box Shadow
+			$this->get_setting('box_shadow_color')
+				->set_title( __( 'Box Shadow Color', 'sv100' ) )
+				->set_description( __( 'Color of the box shadow.', 'sv100' ) )
+				->set_is_responsive(true)
+				->load_type( 'color' );
+
+			$this->get_setting( 'max_width_container' )
+				->set_title( __( 'Max Width Footer Container', 'sv100' ) )
+				->set_description( __( 'Set the max width of the Footer container', 'sv100' ) )
+				->set_options( $this->get_module('sv_common')->get_max_width_options() )
+				->set_default_value( '100%' )
+				->load_type( 'select' );
+
+			$this->get_setting( 'max_width_bar' )
+				->set_title( __( 'Max Width Footer Inner Content', 'sv100' ) )
+				->set_description( __( 'Set the max width of the Footer inner content', 'sv100' ) )
+				->set_options( $this->get_module('sv_common')->get_max_width_options() )
+				->set_default_value( '100%' )
+				->load_type( 'select' );
+
+			$this->get_setting( 'position' )
+				->set_title( __( 'Position', 'sv100' ) )
+				->set_description( __( 'The footer bar behavior when scrolling down the page.', 'sv100' ) )
+				->set_options( array(
+					'relative'		=> __( 'Static', 'sv100' ),
+					'absolute'		=> __( 'Absolute', 'sv100' ),
+					'fixed'			=> __( 'Fixed', 'sv100' ),
+					'sticky'		=> __( 'Sticky', 'sv100' )
+				) )
+				->set_default_value( 'relative' )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
+			$this->get_setting('margin')
+				->set_title(__('Margin', 'sv100'))
+				->set_default_value(array(
+					'top' => '15px',
+					'right' => 'auto',
+					'bottom' => '0',
+					'left' => 'auto',
+					)
+				)
+				->set_is_responsive(true)
+				->load_type('margin');
+
+			$this->get_setting('padding')
+				->set_title(__('Padding', 'sv100'))
+				->set_is_responsive(true)
+				->set_default_value( array(
+					'top' => '30px',
+					'right' => '15px',
+					'bottom' => '30px',
+					'left' => '15px',
+				) )
+				->load_type('margin');
+
 			
 			return $this;
-		}
-		
-		public function add_widgets() {
-			$this->get_module( 'sv_sidebar' )
-				 ->clear_sidebar( 'sv100_sv_sidebar_sv_footer_left' )
-				 ->clear_sidebar( 'sv100_sv_sidebar_sv_footer_center' )
-				 ->clear_sidebar( 'sv100_sv_sidebar_sv_footer_right' )
-				 ->add_widget_to_sidebar( 'recent-posts', 'sv100_sv_sidebar_sv_footer_left' )
-				 ->add_widget_to_sidebar( 'recent-comments', 'sv100_sv_sidebar_sv_footer_center' )
-				 ->add_widget_to_sidebar( 'meta', 'sv100_sv_sidebar_sv_footer_right' );
 		}
 	
 		protected function register_scripts(): sv_footer {
 			// Register Styles
-			$this->scripts_queue['default'] =
-				static::$scripts->create( $this )
-								->set_ID( 'default' )
-								->set_path( 'lib/frontend/css/default.css' );
-	
-			$this->scripts_queue['sidebar_default'] =
-				static::$scripts->create( $this )
-								->set_ID( 'sidebar_default' )
-								->set_path( 'lib/frontend/css/sidebar_default.css' );
+			$this->get_script( 'common' )
+				->set_path( 'lib/frontend/css/common.css' );
+
+			$this->get_script( 'sidebars' )
+				 ->set_path( 'lib/frontend/css/sidebars.css' );
+
+			$this->get_script( 'credits' )
+				->set_path( 'lib/frontend/css/credits.css' );
+			
+			// Inline Config
+			$this->get_script( 'inline_config' )
+				 ->set_path( 'lib/frontend/css/config.php' )
+				 ->set_inline( true );
 	
 			return $this;
 		}
@@ -88,72 +212,138 @@
 			if ( $this->get_module( 'sv_sidebar' ) ) {
 				$this->get_module( 'sv_sidebar' )
 					->create( $this )
-					->set_ID( 'left' )
-					->set_title( __( 'Footer - Left', 'sv100' ) )
-					->set_desc( __( 'Widgets in this area will be shown in the left section of the footer.', 'sv100' ) )
+					->set_ID( 1 )
+					->set_title( __( 'Footer - 1', 'sv100' ) )
+					->set_desc( __( 'Widgets in this sidebar will be shown.', 'sv100' ) )
 					->load_sidebar()
+
 					->create( $this )
-					->set_ID( 'center' )
-					->set_title( __( 'Footer - Center', 'sv100' ) )
-					->set_desc( __( 'Widgets in this area will be shown in the center section of the footer.', 'sv100' ) )
+					->set_ID( 2 )
+					->set_title( __( 'Footer - 2', 'sv100' ) )
+					->set_desc( __( 'Widgets in this sidebar will be shown.', 'sv100' ) )
 					->load_sidebar()
+
 					->create( $this )
-					->set_ID( 'right' )
-					->set_title( __( 'Footer - Right', 'sv100' ) )
-					->set_desc( __( 'Widgets in this area will be shown in the right section of the footer.', 'sv100' ) )
+					->set_ID( 3 )
+					->set_title( __( 'Footer - 3', 'sv100' ) )
+					->set_desc( __( 'Widgets in this sidebar will be shown.', 'sv100' ) )
+					->load_sidebar()
+
+					->create( $this )
+					->set_ID( 4 )
+					->set_title( __( 'Footer - 4', 'sv100' ) )
+					->set_desc( __( 'Widgets in this sidebar will be shown.', 'sv100' ) )
+					->load_sidebar()
+
+					->create( $this )
+					->set_ID( 5 )
+					->set_title( __( 'Footer - 5', 'sv100' ) )
+					->set_desc( __( 'Widgets in this sidebar will be shown.', 'sv100' ) )
 					->load_sidebar();
+
 			}
 	
 			return $this;
 		}
-	
-		public function load( $settings = array() ): string {
-			if ( $this->get_setting( 'activate' )->run_type()->get_data() !== '1' ) {
-				return '';
+		public function has_footer_content(): bool{
+			$check = false;
+			if($this->get_module( 'sv_sidebar' )){
+
+				for($i = 1; $i < 6; $i++){
+					if($this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name() . '_'.$i ) ) ){
+						$check = true;
+					}
+				}
+
 			}
-			
-			$settings				= shortcode_atts(
+
+			return $check;
+		}
+
+		public function load( $settings = array() ): string {
+			$settings								= shortcode_atts(
 				array(
-					'inline'		=> false,
+					'inline'						=> true,
+					'template'                      => false,
 				),
 				$settings,
 				$this->get_module_name()
 			);
-	
+
 			return $this->router( $settings );
 		}
-	
+
 		// Handles the routing of the templates
 		protected function router( array $settings ): string {
-			$template = array(
-				'name'      => 'default',
-				'scripts'   => array(
-					$this->scripts_queue[ 'default' ]->set_inline( $settings['inline'] ),
-					$this->scripts_queue[ 'sidebar_default' ]->set_inline( $settings['inline'] ),
-				),
+			if ( $settings['template'] ) {
+				switch ( $settings['template'] ) {
+					case 'no_footer':
+						$template = array(
+							'name'      => 'default',
+							'scripts'   => array(),
+						);
+						break;
+					default:
+						$template = array(
+							'name'      => 'default',
+							'scripts'   => array(
+								$this->get_script( 'common' )->set_inline( $settings['inline'] ),
+								$this->get_script( 'sidebars' )->set_inline( $settings['inline'] ),
+								$this->get_script( 'credits' )->set_inline( $settings['inline'] ),
+							),
+						);
+						break;
+				}
+			} else {
+				$template = array(
+					'name'      => 'default',
+					'scripts'   => array(
+						$this->get_script( 'common' )->set_inline( $settings['inline'] ),
+						$this->get_script( 'sidebars' )->set_inline( $settings['inline'] ),
+						$this->get_script( 'credits' )->set_inline( $settings['inline'] ),
+					),
+				);
+			}
+
+			// @filter: sv100_sv_footer_template
+			return $this->load_template(
+				apply_filters(
+					$this->get_prefix( 'template' ),
+					$template, $settings, $this
+				), $settings
 			);
-			
-			$this->scripts_queue[ 'inline_config' ] = static::$scripts->create( $this )
-				->set_ID('inline_config')
-				->set_path( 'lib/frontend/css/config.php' )
-				->set_inline(true)
-				->set_is_enqueued();
-	
-			return $this->load_template( $template, $settings );
 		}
-	
+
 		// Loads the templates
-		protected function load_template( array $template, array $settings ) :string {
+		protected function load_template( array $template, array $settings ): string {
 			ob_start();
-			foreach ( $template['scripts'] as $script ) {
+
+			foreach ( $template['scripts'] as $script_name =>  $script ) {
 				$script->set_is_enqueued();
 			}
-	
+
+			$this->get_script( 'inline_config' )->set_is_enqueued();
+
 			// Loads the template
-			include ( $this->get_path('lib/frontend/tpl/' . $template['name'] . '.php' ) );
+			$path = isset($template['custom_path'])
+				? $template['custom_path']
+				: $this->get_path('lib/frontend/tpl/' . $template['name'] . '.php' );
+
+			require ( $path );
 			$output							        = ob_get_contents();
 			ob_end_clean();
-	
+
 			return $output;
+		}
+
+		// Returns the settings value "mobile_zoom" from sv_common
+		public function get_mobile_zoom(): bool {
+			if (
+				! $this->get_module( 'sv_common' )
+				||
+				! $this->get_module( 'sv_common' )->get_settings()['mobile_zoom']
+			) return true;
+
+			return boolval( $this->get_module( 'sv_common' )->get_setting( 'mobile_zoom' )->get_data() );
 		}
 	}

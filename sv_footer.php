@@ -126,6 +126,7 @@
 			$this->get_setting( 'bg_color' )
 				->set_title( __( 'Background Color', 'sv100' ) )
 				->set_default_value( '30,31,34,1' )
+				->set_is_responsive(true)
 				->load_type( 'color' );
 
 			// Box Shadow
@@ -140,6 +141,7 @@
 				->set_description( __( 'Set the max width of the Footer container', 'sv100' ) )
 				->set_options( $this->get_module('sv_common')->get_max_width_options() )
 				->set_default_value( '100%' )
+				->set_is_responsive(true)
 				->load_type( 'select' );
 
 			$this->get_setting( 'max_width_bar' )
@@ -147,6 +149,7 @@
 				->set_description( __( 'Set the max width of the Footer inner content', 'sv100' ) )
 				->set_options( $this->get_module('sv_common')->get_max_width_options() )
 				->set_default_value( '100%' )
+				->set_is_responsive(true)
 				->load_type( 'select' );
 
 			$this->get_setting( 'position' )
@@ -185,7 +188,11 @@
 				) )
 				->load_type('margin');
 
-			
+			$this->get_setting( 'border' )
+				->set_title( __( 'Border', 'sv100' ) )
+				->set_is_responsive(true)
+				->load_type( 'border' );
+
 			return $this;
 		}
 	
@@ -201,7 +208,7 @@
 				->set_path( 'lib/frontend/css/credits.css' );
 			
 			// Inline Config
-			$this->get_script( 'inline_config' )
+			$this->get_script( 'config' )
 				 ->set_path( 'lib/frontend/css/config.php' )
 				 ->set_inline( true );
 	
@@ -322,7 +329,7 @@
 				$script->set_is_enqueued();
 			}
 
-			$this->get_script( 'inline_config' )->set_is_enqueued();
+			$this->get_script( 'config' )->set_is_enqueued();
 
 			// Loads the template
 			$path = isset($template['custom_path'])

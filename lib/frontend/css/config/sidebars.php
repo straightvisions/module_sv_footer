@@ -67,7 +67,7 @@
 	// columns inner ---------------------------------------------------------------------------------------------------
 	
 	echo $_s->build_css(
-		'.sv100_sv_footer .sv100_sv_footer_bar *',
+		'.sv100_sv_footer .sv100_sv_footer_bar',
 		array_merge(
 			$script->get_parent()->get_setting('font')->get_css_data('font-family'),
 			$script->get_parent()->get_setting('font_size')->get_css_data('font-size','','px'),

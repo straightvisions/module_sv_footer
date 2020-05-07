@@ -60,6 +60,11 @@
 		echo $module->get_setting( 'padding' )->form();
 		?>
     </div>
+	<div class="sv_setting_flex">
+		<?php
+			echo $module->get_setting( 'border' )->form();
+		?>
+	</div>
     <h3 class="divider"><?php _e( 'Colors', 'sv100' ); ?></h3>
     <div class="sv_setting_flex">
 		<?php

@@ -87,3 +87,22 @@
 			$script->get_parent()->get_setting('text_color_widget_title')->get_css_data()
 		)
 	);
+
+	// links ----------------------------------------------------------------------------------------------------
+	echo $_s->build_css(
+		'.sv100_sv_footer .sv100_sv_footer_bar a',
+		array_merge(
+			$script->get_parent()->get_setting('text_color_link')->get_css_data(),
+			$script->get_parent()->get_setting('text_bg_color_link')->get_css_data('background-color'),
+			$script->get_parent()->get_setting('text_deco_link')->get_css_data()
+		)
+	);
+
+	echo $_s->build_css(
+		'.sv100_sv_footer .sv100_sv_footer_bar a:hover',
+		array_merge(
+			$script->get_parent()->get_setting('text_color_link_hover')->get_css_data(),
+			$script->get_parent()->get_setting('text_bg_color_link_hover')->get_css_data('background-color'),
+			$script->get_parent()->get_setting('text_deco_link_hover')->get_css_data()
+		)
+	);

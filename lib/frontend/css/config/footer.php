@@ -11,7 +11,8 @@
 		array_merge(
 			$script->get_parent()->get_setting('max_width_container')->get_css_data('max-width'),
 			$script->get_parent()->get_setting('margin')->get_css_data(),
-			$script->get_parent()->get_setting('border')->get_css_data()
+			$script->get_parent()->get_setting('border')->get_css_data(),
+			$script->get_parent()->get_setting('bg_color')->get_css_data('background-color')
 		)
 	);
 

@@ -28,6 +28,8 @@
 		}
 		
 		protected function load_settings(): sv_footer {
+			$common = $this->get_module( 'sv_common' );
+
 			$this->get_setting( 'direction' )
 				->set_title( __( 'Content Direction', 'sv100' ) )
 				->set_options( array(
@@ -90,7 +92,55 @@
 
 			$this->get_setting( 'text_color' )
 				->set_title( __( 'Text Color', 'sv100' ) )
-				->set_default_value( '#ffffff' )
+				->set_default_value( $common->get_setting('text_color')->get_data() )
+				->set_is_responsive(true)
+				->load_type( 'color' );
+
+			$this->get_setting( 'text_color_link' )
+				->set_title( __( 'Color', 'sv100' ) )
+				->set_default_value( $common->get_setting('text_color_link')->get_data() )
+				->set_is_responsive(true)
+				->load_type( 'color' );
+
+			$this->get_setting( 'text_color_link_hover' )
+				->set_title( __( 'Color', 'sv100' ) )
+				->set_default_value( $common->get_setting('text_color_link_hover')->get_data() )
+				->set_is_responsive(true)
+				->load_type( 'color' );
+
+			$this->get_setting( 'text_deco_link' )
+				->set_title( __( 'Decoration', 'sv100' ) )
+				->set_default_value( $common->get_setting('text_deco_link')->get_data() )
+				->set_options( array(
+					'none'			=> __( 'None', 'sv100' ),
+					'underline'		=> __( 'Underline', 'sv100' ),
+					'line-through'	=> __( 'Line Through', 'sv100' ),
+					'overline'		=> __( 'Overline', 'sv100' ),
+				) )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
+			$this->get_setting( 'text_deco_link_hover' )
+				->set_title( __( 'Decoration', 'sv100' ) )
+				->set_default_value( $common->get_setting('text_deco_link_hover')->get_data() )
+				->set_options( array(
+					'none'			=> __( 'None', 'sv100' ),
+					'underline'		=> __( 'Underline', 'sv100' ),
+					'line-through'	=> __( 'Line Through', 'sv100' ),
+					'overline'		=> __( 'Overline', 'sv100' ),
+				) )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
+			$this->get_setting( 'text_bg_color_link' )
+				->set_title( __( 'Background Color', 'sv100' ) )
+				->set_default_value( '0,0,0,0' )
+				->set_is_responsive(true)
+				->load_type( 'color' );
+
+			$this->get_setting( 'text_bg_color_link_hover' )
+				->set_title( __( 'Background Color', 'sv100' ) )
+				->set_default_value( '0,0,0,0' )
 				->set_is_responsive(true)
 				->load_type( 'color' );
 			

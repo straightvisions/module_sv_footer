@@ -72,7 +72,13 @@
 			$script->get_parent()->get_setting('font')->get_css_data('font-family'),
 			$script->get_parent()->get_setting('font_size')->get_css_data('font-size','','px'),
 			$script->get_parent()->get_setting('line_height')->get_css_data('line-height'),
-			$script->get_parent()->get_setting('text_color')->get_css_data()
+			$script->get_parent()->get_setting('text_color')->get_css_data(),
+			$script->get_parent()->get_setting('text_color_link')->get_css_data(),
+			$script->get_parent()->get_setting('text_color_link_hover')->get_css_data(),
+			$script->get_parent()->get_setting('text_bg_color_link')->get_css_data(),
+			$script->get_parent()->get_setting('text_bg_color_link_hover')->get_css_data(),
+			$script->get_parent()->get_setting('text_deco_link')->get_css_data(),
+			$script->get_parent()->get_setting('text_deco_link_hover')->get_css_data()
 		)
 	);
 

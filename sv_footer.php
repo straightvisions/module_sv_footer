@@ -256,6 +256,26 @@
 			$common = $this->get_module( 'sv_common' );
 
 			// Navbars
+			$this->get_setting( 'navbar_item_font' )
+				->set_title( __( 'Font Family', 'sv100' ) )
+				->set_description( __( 'Choose a font for your text.', 'sv100' ) )
+				->set_options( $this->get_module( 'sv_webfontloader' )->get_font_options() )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
+			$this->get_setting( 'navbar_item_font_size' )
+				->set_title( __( 'Font Size', 'sv100' ) )
+				->set_description( __( 'Font Size in pixel.', 'sv100' ) )
+				->set_default_value( 16 )
+				->set_is_responsive(true)
+				->load_type( 'number' );
+
+			$this->get_setting( 'navbar_item_line_height' )
+				->set_title( __( 'Line Height', 'sv100' ) )
+				->set_description( __( 'Set line height as multiplier or with a unit.', 'sv100' ) )
+				->set_is_responsive(true)
+				->load_type( 'text' );
+
 			$this->get_setting( 'navbar_item_text_color_link' )
 				->set_title( __( 'Color', 'sv100' ) )
 				->set_default_value( $common->get_setting('text_color_link')->get_data() )

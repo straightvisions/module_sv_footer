@@ -10,6 +10,7 @@
         </div>
     </footer>
 	<?php
+	    echo $this->get_module( 'sv_footer_copyright' ) ? $this->get_module( 'sv_footer_copyright' )->load() : '';
 	    include( $this->get_path('lib/frontend/tpl/credits.php') );
 	?>
 </div>

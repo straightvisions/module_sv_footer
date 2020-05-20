@@ -2,7 +2,7 @@
 	namespace sv100;
 	
 	/**
-	 * @version         4.124
+	 * @version         4.125
 	 * @author			straightvisions GmbH
 	 * @package			sv100
 	 * @copyright		2019 straightvisions GmbH

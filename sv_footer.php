@@ -16,6 +16,8 @@
 			$this->set_module_title( __( 'SV Footer', 'sv100' ) )
 				->set_module_desc( __( 'Manages the footer.', 'sv100' ) )
 				->load_settings()
+				->load_settings_widgets()
+				->load_settings_navbars()
 				->register_scripts()
 				->register_sidebars()
 				->set_section_title( __( 'Footer', 'sv100' ) )
@@ -67,6 +69,82 @@
 					->set_is_responsive(true)
 					->load_type( 'select' );
 			}
+			
+			// Background Settings
+			$this->get_setting( 'bg_color' )
+				->set_title( __( 'Background Color', 'sv100' ) )
+				->set_default_value( '30,31,34,1' )
+				->set_is_responsive(true)
+				->load_type( 'color' );
+
+			// Box Shadow
+			$this->get_setting('box_shadow_color')
+				->set_title( __( 'Box Shadow Color', 'sv100' ) )
+				->set_description( __( 'Color of the box shadow.', 'sv100' ) )
+				->set_is_responsive(true)
+				->load_type( 'color' );
+
+			$this->get_setting( 'max_width_container' )
+				->set_title( __( 'Max Width Footer Container', 'sv100' ) )
+				->set_description( __( 'Set the max width of the Footer container', 'sv100' ) )
+				->set_options( $this->get_module('sv_common')->get_max_width_options() )
+				->set_default_value( '100%' )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
+			$this->get_setting( 'max_width_bar' )
+				->set_title( __( 'Max Width Footer Inner Content', 'sv100' ) )
+				->set_description( __( 'Set the max width of the Footer inner content', 'sv100' ) )
+				->set_options( $this->get_module('sv_common')->get_max_width_options() )
+				->set_default_value( '100%' )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
+			$this->get_setting( 'position' )
+				->set_title( __( 'Position', 'sv100' ) )
+				->set_description( __( 'The footer bar behavior when scrolling down the page.', 'sv100' ) )
+				->set_options( array(
+					'relative'		=> __( 'Static', 'sv100' ),
+					'absolute'		=> __( 'Absolute', 'sv100' ),
+					'fixed'			=> __( 'Fixed', 'sv100' ),
+					'sticky'		=> __( 'Sticky', 'sv100' )
+				) )
+				->set_default_value( 'relative' )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
+			$this->get_setting('margin')
+				->set_title(__('Margin', 'sv100'))
+				->set_default_value(array(
+					'top' => '15px',
+					'right' => 'auto',
+					'bottom' => '0',
+					'left' => 'auto',
+					)
+				)
+				->set_is_responsive(true)
+				->load_type('margin');
+
+			$this->get_setting('padding')
+				->set_title(__('Padding', 'sv100'))
+				->set_is_responsive(true)
+				->set_default_value( array(
+					'top' => '30px',
+					'right' => '15px',
+					'bottom' => '30px',
+					'left' => '15px',
+				) )
+				->load_type('margin');
+
+			$this->get_setting( 'border' )
+				->set_title( __( 'Border', 'sv100' ) )
+				->set_is_responsive(true)
+				->load_type( 'border' );
+			return $this;
+		}
+		protected function load_settings_widgets(): sv_footer
+		{
+			$common = $this->get_module('sv_common');
 
 			// Text Settings
 			$this->get_setting( 'font' )
@@ -143,7 +221,7 @@
 				->set_default_value( '0,0,0,0' )
 				->set_is_responsive(true)
 				->load_type( 'color' );
-			
+
 			// Widgets Title
 			$this->get_setting( 'font_widget_title' )
 				->set_title( __( 'Font Family', 'sv100' ) )
@@ -171,81 +249,73 @@
 				->set_default_value( '#85868c' )
 				->set_is_responsive(true)
 				->load_type( 'color' );
-			
-			// Background Settings
-			$this->get_setting( 'bg_color' )
-				->set_title( __( 'Background Color', 'sv100' ) )
-				->set_default_value( '30,31,34,1' )
-				->set_is_responsive(true)
-				->load_type( 'color' );
-
-			// Box Shadow
-			$this->get_setting('box_shadow_color')
-				->set_title( __( 'Box Shadow Color', 'sv100' ) )
-				->set_description( __( 'Color of the box shadow.', 'sv100' ) )
-				->set_is_responsive(true)
-				->load_type( 'color' );
-
-			$this->get_setting( 'max_width_container' )
-				->set_title( __( 'Max Width Footer Container', 'sv100' ) )
-				->set_description( __( 'Set the max width of the Footer container', 'sv100' ) )
-				->set_options( $this->get_module('sv_common')->get_max_width_options() )
-				->set_default_value( '100%' )
-				->set_is_responsive(true)
-				->load_type( 'select' );
-
-			$this->get_setting( 'max_width_bar' )
-				->set_title( __( 'Max Width Footer Inner Content', 'sv100' ) )
-				->set_description( __( 'Set the max width of the Footer inner content', 'sv100' ) )
-				->set_options( $this->get_module('sv_common')->get_max_width_options() )
-				->set_default_value( '100%' )
-				->set_is_responsive(true)
-				->load_type( 'select' );
-
-			$this->get_setting( 'position' )
-				->set_title( __( 'Position', 'sv100' ) )
-				->set_description( __( 'The footer bar behavior when scrolling down the page.', 'sv100' ) )
-				->set_options( array(
-					'relative'		=> __( 'Static', 'sv100' ),
-					'absolute'		=> __( 'Absolute', 'sv100' ),
-					'fixed'			=> __( 'Fixed', 'sv100' ),
-					'sticky'		=> __( 'Sticky', 'sv100' )
-				) )
-				->set_default_value( 'relative' )
-				->set_is_responsive(true)
-				->load_type( 'select' );
-
-			$this->get_setting('margin')
-				->set_title(__('Margin', 'sv100'))
-				->set_default_value(array(
-					'top' => '15px',
-					'right' => 'auto',
-					'bottom' => '0',
-					'left' => 'auto',
-					)
-				)
-				->set_is_responsive(true)
-				->load_type('margin');
-
-			$this->get_setting('padding')
-				->set_title(__('Padding', 'sv100'))
-				->set_is_responsive(true)
-				->set_default_value( array(
-					'top' => '30px',
-					'right' => '15px',
-					'bottom' => '30px',
-					'left' => '15px',
-				) )
-				->load_type('margin');
-
-			$this->get_setting( 'border' )
-				->set_title( __( 'Border', 'sv100' ) )
-				->set_is_responsive(true)
-				->load_type( 'border' );
 
 			return $this;
 		}
-	
+		protected function load_settings_navbars(): sv_footer {
+			$common = $this->get_module( 'sv_common' );
+
+			// Navbars
+			$this->get_setting( 'navbar_item_text_color_link' )
+				->set_title( __( 'Color', 'sv100' ) )
+				->set_default_value( $common->get_setting('text_color_link')->get_data() )
+				->set_is_responsive(true)
+				->load_type( 'color' );
+
+			$this->get_setting( 'navbar_item_text_color_link_hover' )
+				->set_title( __( 'Color', 'sv100' ) )
+				->set_default_value( $common->get_setting('text_color_link_hover')->get_data() )
+				->set_is_responsive(true)
+				->load_type( 'color' );
+
+			$this->get_setting( 'navbar_item_text_deco_link' )
+				->set_title( __( 'Decoration', 'sv100' ) )
+				->set_default_value( $common->get_setting('text_deco_link')->get_data() )
+				->set_options( array(
+					'none'			=> __( 'None', 'sv100' ),
+					'underline'		=> __( 'Underline', 'sv100' ),
+					'line-through'	=> __( 'Line Through', 'sv100' ),
+					'overline'		=> __( 'Overline', 'sv100' ),
+				) )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
+			$this->get_setting( 'navbar_item_text_deco_link_hover' )
+				->set_title( __( 'Decoration', 'sv100' ) )
+				->set_default_value( $common->get_setting('text_deco_link_hover')->get_data() )
+				->set_options( array(
+					'none'			=> __( 'None', 'sv100' ),
+					'underline'		=> __( 'Underline', 'sv100' ),
+					'line-through'	=> __( 'Line Through', 'sv100' ),
+					'overline'		=> __( 'Overline', 'sv100' ),
+				) )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
+			$this->get_setting( 'navbar_item_text_bg_color_link' )
+				->set_title( __( 'Background Color', 'sv100' ) )
+				->set_default_value( '0,0,0,0' )
+				->set_is_responsive(true)
+				->load_type( 'color' );
+
+			$this->get_setting( 'navbar_item_text_bg_color_link_hover' )
+				->set_title( __( 'Background Color', 'sv100' ) )
+				->set_default_value( '0,0,0,0' )
+				->set_is_responsive(true)
+				->load_type( 'color' );
+
+			$this->get_setting('navbar_item_margin')
+				->set_title(__('Margin', 'sv100'))
+				->set_is_responsive(true)
+				->load_type('margin');
+
+			$this->get_setting('navbar_item_padding')
+				->set_title(__('Padding', 'sv100'))
+				->set_is_responsive(true)
+				->load_type('margin');
+
+			return $this;
+		}
 		protected function register_scripts(): sv_footer {
 			// Register Styles
 			$this->get_script( 'common' )

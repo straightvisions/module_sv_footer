@@ -1,3 +1,7 @@
+.sv100_sv_footer .sv100_sv_footer_bar .menu-item a{
+	display:block;
+}
+
 /* ### Mobile ### */
 .sv100_sv_footer_wrapper {
 	width: 100%;

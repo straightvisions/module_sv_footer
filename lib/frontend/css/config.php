@@ -1,11 +1,6 @@
 <?php
-// Fetches all settings and creates new variables with the setting ID as name and setting data as value.
-// This reduces the lines of code for the needed setting values.
-foreach ( $script->get_parent()->get_settings() as $setting ) {
-	${ $setting->get_ID() } = $setting->get_data();
-}
 
-include( $script->get_parent()->get_path( 'lib/frontend/css/config/footer.php' ) );
+require( $script->get_parent()->get_path( 'lib/frontend/css/config/general.php' ) );
 
 if( $script->get_parent()->get_root()->get_module( 'sv_sidebar' ) ){
 	$check = false;
@@ -15,7 +10,8 @@ if( $script->get_parent()->get_root()->get_module( 'sv_sidebar' ) ){
 	}
 
 	if( $check ){
-		include( $script->get_parent()->get_path( 'lib/frontend/css/config/sidebars.php' ) );
+		require( $script->get_parent()->get_path( 'lib/frontend/css/config/widgets.php' ) );
+		require( $script->get_parent()->get_path( 'lib/frontend/css/config/navbars.php' ) );
 	}
 }
 

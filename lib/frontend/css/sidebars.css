@@ -31,13 +31,3 @@
 .sv100_sv_footer .sv100_sv_footer_bar .widget_nav_menu ul.sub-menu{
     display:none;
 }
-
-/* headlines -------------------------------- */
-.sv100_sv_footer .sv100_sv_footer_bar h1,
-.sv100_sv_footer .sv100_sv_footer_bar h2,
-.sv100_sv_footer .sv100_sv_footer_bar h3,
-.sv100_sv_footer .sv100_sv_footer_bar h4,
-.sv100_sv_footer .sv100_sv_footer_bar h5,
-.sv100_sv_footer .sv100_sv_footer_bar h6 {
-    margin: 0 0  25px 0;
-}

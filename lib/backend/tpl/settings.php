@@ -4,6 +4,8 @@
         <ul class="sv_setting_subpages_nav"></ul>
 		<?php
 		    include( $module->get_path( 'lib/backend/tpl/subpage_general.php' ) );
+			include( $module->get_path( 'lib/backend/tpl/subpage_widgets.php' ) );
+			include( $module->get_path( 'lib/backend/tpl/subpage_navbars.php' ) );
 		?>
     </div>
 	<?php

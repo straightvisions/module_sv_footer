@@ -436,7 +436,6 @@
 							'scripts'   => array(
 								$this->get_script( 'common' )->set_inline( $settings['inline'] ),
 								$this->get_script( 'sidebars' )->set_inline( $settings['inline'] ),
-								$this->get_script( 'credits' )->set_inline( $settings['inline'] ),
 							),
 						);
 						break;
@@ -447,7 +446,6 @@
 					'scripts'   => array(
 						$this->get_script( 'common' )->set_inline( $settings['inline'] ),
 						$this->get_script( 'sidebars' )->set_inline( $settings['inline'] ),
-						$this->get_script( 'credits' )->set_inline( $settings['inline'] ),
 					),
 				);
 			}
@@ -465,11 +463,15 @@
 		protected function load_template( array $template, array $settings ): string {
 			ob_start();
 
-			foreach ( $template['scripts'] as $script_name =>  $script ) {
-				$script->set_is_enqueued();
+			if ( $this->has_footer_content() ) {
+				foreach ($template['scripts'] as $script_name => $script) {
+					$script->set_is_enqueued();
+				}
+
+				$this->get_script('config')->set_is_enqueued();
 			}
 
-			$this->get_script( 'config' )->set_is_enqueued();
+			$this->get_script( 'credits' )->set_is_enqueued();
 
 			// Loads the template
 			$path = isset($template['custom_path'])

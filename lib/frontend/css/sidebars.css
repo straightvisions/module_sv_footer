@@ -21,12 +21,6 @@
 .sv100_sv_footer_bar > .sv100_sv_sidebar > *:last-child{
     margin-bottom:0;
 }
-/* navigation -------------------------------- */
-.sv100_sv_footer .sv100_sv_footer_bar .widget_nav_menu ul{
-    list-style: none;
-    margin:0;
-    padding:0;
-}
 
 .sv100_sv_footer .sv100_sv_footer_bar .widget_nav_menu ul.sub-menu{
     display:none;

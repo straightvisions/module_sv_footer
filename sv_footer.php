@@ -2,7 +2,7 @@
 	namespace sv100;
 	
 	/**
-	 * @version         4.125
+	 * @version         4.127
 	 * @author			straightvisions GmbH
 	 * @package			sv100
 	 * @copyright		2019 straightvisions GmbH
@@ -256,6 +256,17 @@
 			$common = $this->get_module( 'sv_common' );
 
 			// Navbars
+			$this->get_setting( 'navbar_direction' )
+				->set_title( __( 'Navbar Direction', 'sv100' ) )
+				->set_options( array(
+					'row'		=> __( 'Horizontal', 'sv100' ),
+					'column'	=> __( 'Vertical', 'sv100' ),
+				) )
+				->set_default_value( 'column' )
+				->set_description( __( 'The direction of columns.', 'sv100' ) )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
 			$this->get_setting( 'navbar_item_font' )
 				->set_title( __( 'Font Family', 'sv100' ) )
 				->set_description( __( 'Choose a font for your text.', 'sv100' ) )

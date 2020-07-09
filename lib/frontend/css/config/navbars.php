@@ -3,15 +3,7 @@
 	echo $_s->build_css(
 		'.sv100_sv_footer .sv100_sv_footer_bar .menu',
 		array_merge(
-			$script->get_parent()->get_setting('navbar_direction')->get_css_data('flex-direction'),
-		)
-	);
-
-	// links ----------------------------------------------------------------------------------------------------
-	echo $_s->build_css(
-		'.sv100_sv_footer .sv100_sv_footer_bar .menu-item',
-		array_merge(
-			$script->get_parent()->get_setting('navbar_item_margin')->get_css_data(),
+			$script->get_parent()->get_setting('navbar_direction')->get_css_data('flex-direction')
 		)
 	);
 

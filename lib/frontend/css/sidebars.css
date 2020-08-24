@@ -1,27 +1,28 @@
 /* columns -------------------------------- */
 .sv100_sv_footer_bar > .sv100_sv_sidebar{
-    display: flex;
-    flex: 0 1 auto;
-    margin:0 15px 15px 15px; /* changes here must be also applied in sidebars config */
-    flex-direction: column;
+	display: flex;
+	flex: 0 1 auto;
+	margin:0 15px 15px 15px; /* changes here must be also applied in sidebars config */
+	flex-direction: column;
+	flex-basis:100%;
 }
 
 .sv100_sv_footer .sv100_sv_footer_bar > *:first-child{
-    margin-left: 0 !important; /* override inline css */
+	margin-left: 0 !important; /* override inline css */
 }
 
 .sv100_sv_footer .sv100_sv_footer_bar > *:last-child{
-    margin-right: 0 !important; /* override inline css */
+	margin-right: 0 !important; /* override inline css */
 }
 
 /* common inner ------------------------------ */
 .sv100_sv_footer_bar > .sv100_sv_sidebar > *{
-    margin-bottom:10px;
+	margin-bottom:10px;
 }
 .sv100_sv_footer_bar > .sv100_sv_sidebar > *:last-child{
-    margin-bottom:0;
+	margin-bottom:0;
 }
 
 .sv100_sv_footer .sv100_sv_footer_bar .widget_nav_menu ul.sub-menu{
-    display:none;
+	display:none;
 }

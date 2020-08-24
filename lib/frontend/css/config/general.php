@@ -25,6 +25,13 @@
 		)
 	);
 
+	echo $_s->build_css(
+		'.sv100_sv_footer_credits > .sv100_sv_footer_credits_info',
+		array_merge(
+			$script->get_parent()->get_setting('direction')->get_css_data('flex-direction')
+		)
+	);
+
 	// columns outer ---------------------------------------------------------------------------------------------------
 	$prepared_properties = array();
 	for($i = 1; $i < 6; $i++){

@@ -30,8 +30,6 @@
 		}
 		
 		protected function load_settings(): sv_footer {
-			$common = $this->get_module( 'sv_common' );
-
 			$this->get_setting( 'direction' )
 				->set_title( __( 'Content Direction', 'sv100' ) )
 				->set_options( array(
@@ -87,7 +85,7 @@
 			$this->get_setting( 'max_width_container' )
 				->set_title( __( 'Max Width Footer Container', 'sv100' ) )
 				->set_description( __( 'Set the max width of the Footer container', 'sv100' ) )
-				->set_options( $this->get_module('sv_common')->get_max_width_options() )
+				->set_options( $this->get_module('sv_common') ? $this->get_module('sv_common')->get_max_width_options() : array('' => __('Please activate module SV Common for this Feature.', 'sv100')) )
 				->set_default_value( '100%' )
 				->set_is_responsive(true)
 				->load_type( 'select' );
@@ -95,7 +93,7 @@
 			$this->get_setting( 'max_width_bar' )
 				->set_title( __( 'Max Width Footer Inner Content', 'sv100' ) )
 				->set_description( __( 'Set the max width of the Footer inner content', 'sv100' ) )
-				->set_options( $this->get_module('sv_common')->get_max_width_options() )
+				->set_options( $this->get_module('sv_common') ? $this->get_module('sv_common')->get_max_width_options() : array('' => __('Please activate module SV Common for this Feature.', 'sv100')) )
 				->set_default_value( '100%' )
 				->set_is_responsive(true)
 				->load_type( 'select' );
@@ -144,13 +142,11 @@
 		}
 		protected function load_settings_widgets(): sv_footer
 		{
-			$common = $this->get_module('sv_common');
-
 			// Text Settings
 			$this->get_setting( 'font' )
 				->set_title( __( 'Font Family', 'sv100' ) )
 				->set_description( __( 'Choose a font for your text.', 'sv100' ) )
-				->set_options( $this->get_module( 'sv_webfontloader' )->get_font_options() )
+				->set_options( $this->get_module( 'sv_webfontloader' ) ? $this->get_module( 'sv_webfontloader' )->get_font_options() : array('' => __('Please activate module SV Webfontloader for this Feature.', 'sv100')) )
 				->set_is_responsive(true)
 				->load_type( 'select' );
 
@@ -170,25 +166,25 @@
 
 			$this->get_setting( 'text_color' )
 				->set_title( __( 'Text Color', 'sv100' ) )
-				->set_default_value( $common->get_setting('text_color')->get_data() )
+				->set_default_value( $this->get_module('sv_common') ? $this->get_module('sv_common')->get_setting('text_color')->get_data() : false )
 				->set_is_responsive(true)
 				->load_type( 'color' );
 
 			$this->get_setting( 'text_color_link' )
 				->set_title( __( 'Color', 'sv100' ) )
-				->set_default_value( $common->get_setting('text_color_link')->get_data() )
+				->set_default_value( $this->get_module('sv_common') ? $this->get_module('sv_common')->get_setting('text_color_link')->get_data() : false )
 				->set_is_responsive(true)
 				->load_type( 'color' );
 
 			$this->get_setting( 'text_color_link_hover' )
 				->set_title( __( 'Color', 'sv100' ) )
-				->set_default_value( $common->get_setting('text_color_link_hover')->get_data() )
+				->set_default_value( $this->get_module('sv_common') ? $this->get_module('sv_common')->get_setting('text_color_link_hover')->get_data() : false )
 				->set_is_responsive(true)
 				->load_type( 'color' );
 
 			$this->get_setting( 'text_deco_link' )
 				->set_title( __( 'Decoration', 'sv100' ) )
-				->set_default_value( $common->get_setting('text_deco_link')->get_data() )
+				->set_default_value( $this->get_module('sv_common') ? $this->get_module('sv_common')->get_setting('text_deco_link')->get_data() : false )
 				->set_options( array(
 					'none'			=> __( 'None', 'sv100' ),
 					'underline'		=> __( 'Underline', 'sv100' ),
@@ -200,7 +196,7 @@
 
 			$this->get_setting( 'text_deco_link_hover' )
 				->set_title( __( 'Decoration', 'sv100' ) )
-				->set_default_value( $common->get_setting('text_deco_link_hover')->get_data() )
+				->set_default_value( $this->get_module('sv_common') ? $this->get_module('sv_common')->get_setting('text_deco_link_hover')->get_data() : false )
 				->set_options( array(
 					'none'			=> __( 'None', 'sv100' ),
 					'underline'		=> __( 'Underline', 'sv100' ),
@@ -226,7 +222,7 @@
 			$this->get_setting( 'font_widget_title' )
 				->set_title( __( 'Font Family', 'sv100' ) )
 				->set_description( __( 'Choose a font for your text.', 'sv100' ) )
-				->set_options( $this->get_module( 'sv_webfontloader' )->get_font_options() )
+				->set_options( $this->get_module( 'sv_webfontloader' ) ? $this->get_module( 'sv_webfontloader' )->get_font_options() : array('' => __('Please activate module SV Webfontloader for this Feature.', 'sv100')) )
 				->set_is_responsive(true)
 				->load_type( 'select' );
 
@@ -253,8 +249,6 @@
 			return $this;
 		}
 		protected function load_settings_navbars(): sv_footer {
-			$common = $this->get_module( 'sv_common' );
-
 			// Navbars
 			$this->get_setting( 'navbar_direction' )
 				->set_title( __( 'Navbar Direction', 'sv100' ) )
@@ -270,7 +264,7 @@
 			$this->get_setting( 'navbar_item_font' )
 				->set_title( __( 'Font Family', 'sv100' ) )
 				->set_description( __( 'Choose a font for your text.', 'sv100' ) )
-				->set_options( $this->get_module( 'sv_webfontloader' )->get_font_options() )
+				->set_options( $this->get_module( 'sv_webfontloader' ) ? $this->get_module( 'sv_webfontloader' )->get_font_options() : array('' => __('Please activate module SV Webfontloader for this Feature.', 'sv100')) )
 				->set_is_responsive(true)
 				->load_type( 'select' );
 
@@ -289,19 +283,19 @@
 
 			$this->get_setting( 'navbar_item_text_color_link' )
 				->set_title( __( 'Color', 'sv100' ) )
-				->set_default_value( $common->get_setting('text_color_link')->get_data() )
+				->set_default_value( $this->get_module('sv_common') ? $this->get_module('sv_common')->get_setting('text_color_link')->get_data() : false )
 				->set_is_responsive(true)
 				->load_type( 'color' );
 
 			$this->get_setting( 'navbar_item_text_color_link_hover' )
 				->set_title( __( 'Color', 'sv100' ) )
-				->set_default_value( $common->get_setting('text_color_link_hover')->get_data() )
+				->set_default_value( $this->get_module('sv_common') ? $this->get_module('sv_common')->get_setting('text_color_link_hover')->get_data() : false )
 				->set_is_responsive(true)
 				->load_type( 'color' );
 
 			$this->get_setting( 'navbar_item_text_deco_link' )
 				->set_title( __( 'Decoration', 'sv100' ) )
-				->set_default_value( $common->get_setting('text_deco_link')->get_data() )
+				->set_default_value( $this->get_module('sv_common') ? $this->get_module('sv_common')->get_setting('text_deco_link')->get_data() : false )
 				->set_options( array(
 					'none'			=> __( 'None', 'sv100' ),
 					'underline'		=> __( 'Underline', 'sv100' ),
@@ -313,7 +307,7 @@
 
 			$this->get_setting( 'navbar_item_text_deco_link_hover' )
 				->set_title( __( 'Decoration', 'sv100' ) )
-				->set_default_value( $common->get_setting('text_deco_link_hover')->get_data() )
+				->set_default_value( $this->get_module('sv_common') ? $this->get_module('sv_common')->get_setting('text_deco_link_hover')->get_data() : false )
 				->set_options( array(
 					'none'			=> __( 'None', 'sv100' ),
 					'underline'		=> __( 'Underline', 'sv100' ),
@@ -356,6 +350,7 @@
 				 ->set_path( 'lib/frontend/css/sidebars.css' );
 
 			$this->get_script( 'credits' )
+				->set_inline(true)
 				->set_path( 'lib/frontend/css/credits.css' );
 			
 			// Inline Config

@@ -16,8 +16,7 @@
 			$this->set_module_title( __( 'SV Footer', 'sv100' ) )
 				->set_module_desc( __( 'Manages the footer.', 'sv100' ) )
 				->load_settings()
-				->load_settings_widgets()
-				->load_settings_navbars()
+
 				->register_scripts()
 				->register_sidebars()
 				->set_section_title( __( 'Footer', 'sv100' ) )
@@ -138,6 +137,9 @@
 				->set_title( __( 'Border', 'sv100' ) )
 				->set_is_responsive(true)
 				->load_type( 'border' );
+
+			$this->load_settings_widgets()->load_settings_navbars();
+
 			return $this;
 		}
 		protected function load_settings_widgets(): sv_footer
@@ -414,6 +416,10 @@
 		}
 
 		public function load( $settings = array() ): string {
+			if(!is_admin()){
+				$this->load_settings()->register_scripts();
+			}
+
 			$settings								= shortcode_atts(
 				array(
 					'inline'						=> true,

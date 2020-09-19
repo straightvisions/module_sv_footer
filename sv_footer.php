@@ -1,29 +1,17 @@
 <?php
 	namespace sv100;
-	
-	/**
-	 * @version         4.127
-	 * @author			straightvisions GmbH
-	 * @package			sv100
-	 * @copyright		2019 straightvisions GmbH
-	 * @link			https://straightvisions.com
-	 * @since			1.000
-	 * @license			See license.txt or https://straightvisions.com
-	 */
-	
+
 	class sv_footer extends init {
 		public function init() {
 			$this->set_module_title( __( 'SV Footer', 'sv100' ) )
 				->set_module_desc( __( 'Manages the footer.', 'sv100' ) )
-				->load_settings()
-
-				->register_scripts()
-				->register_sidebars()
-				->set_section_title( __( 'Footer', 'sv100' ) )
-				->set_section_desc( __( 'Sidebar & Color settings', 'sv100' ) )
+				->set_css_cache_active()
+				->set_section_title( $this->get_module_title() )
+				->set_section_desc( $this->get_module_desc() )
 				->set_section_type( 'settings' )
-				->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) )
-				->set_section_order(40)
+				->set_section_template_path()
+				->set_section_order(5000)
+				->register_sidebars()
 				->get_root()
 				->add_section( $this );
 		}
@@ -344,22 +332,16 @@
 			return $this;
 		}
 		protected function register_scripts(): sv_footer {
-			// Register Styles
-			$this->get_script( 'common' )
-				->set_path( 'lib/frontend/css/common.css' );
+			parent::register_scripts();
 
+			// Register Styles
 			$this->get_script( 'sidebars' )
-				 ->set_path( 'lib/frontend/css/sidebars.css' );
+				 ->set_path( 'lib/css/common/sidebars.css' );
 
 			$this->get_script( 'credits' )
 				->set_inline(true)
-				->set_path( 'lib/frontend/css/credits.css' );
-			
-			// Inline Config
-			$this->get_script( 'config' )
-				 ->set_path( 'lib/frontend/css/config.php' )
-				 ->set_inline( true );
-	
+				->set_path( 'lib/css/common/credits.css' );
+
 			return $this;
 		}
 	
@@ -403,13 +385,11 @@
 		public function has_footer_content(): bool{
 			$check = false;
 			if($this->get_module( 'sv_sidebar' )){
-
 				for($i = 1; $i < 6; $i++){
 					if($this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name() . '_'.$i ) ) ){
 						$check = true;
 					}
 				}
-
 			}
 
 			return $check;
@@ -418,93 +398,20 @@
 		public function load( $settings = array() ): string {
 			if(!is_admin()){
 				$this->load_settings()->register_scripts();
-			}
 
-			$settings								= shortcode_atts(
-				array(
-					'inline'						=> true,
-					'template'                      => false,
-				),
-				$settings,
-				$this->get_module_name()
-			);
-
-			return $this->router( $settings );
-		}
-
-		// Handles the routing of the templates
-		protected function router( array $settings ): string {
-			if ( $settings['template'] ) {
-				switch ( $settings['template'] ) {
-					case 'no_footer':
-						$template = array(
-							'name'      => 'default',
-							'scripts'   => array(),
-						);
-						break;
-					default:
-						$template = array(
-							'name'      => 'default',
-							'scripts'   => array(
-								$this->get_script( 'common' )->set_inline( $settings['inline'] ),
-								$this->get_script( 'sidebars' )->set_inline( $settings['inline'] ),
-							),
-						);
-						break;
+				if ( $this->has_footer_content() ) {
+					foreach($this->get_scripts() as $script){
+						$script->set_is_enqueued();
+					}
+				}else{
+					$this->get_script( 'credits' )->set_is_enqueued();
 				}
-			} else {
-				$template = array(
-					'name'      => 'default',
-					'scripts'   => array(
-						$this->get_script( 'common' )->set_inline( $settings['inline'] ),
-						$this->get_script( 'sidebars' )->set_inline( $settings['inline'] ),
-					),
-				);
 			}
 
-			// @filter: sv100_sv_footer_template
-			return $this->load_template(
-				apply_filters(
-					$this->get_prefix( 'template' ),
-					$template, $settings, $this
-				), $settings
-			);
-		}
-
-		// Loads the templates
-		protected function load_template( array $template, array $settings ): string {
 			ob_start();
-
-			if ( $this->has_footer_content() ) {
-				foreach ($template['scripts'] as $script_name => $script) {
-					$script->set_is_enqueued();
-				}
-
-				$this->get_script('config')->set_is_enqueued();
-			}
-
-			$this->get_script( 'credits' )->set_is_enqueued();
-
-			// Loads the template
-			$path = isset($template['custom_path'])
-				? $template['custom_path']
-				: $this->get_path('lib/frontend/tpl/' . $template['name'] . '.php' );
-
-			require ( $path );
-			$output							        = ob_get_contents();
-			ob_end_clean();
+			require ( $this->get_path('lib/tpl/frontend/default.php' ) );
+			$output							= ob_get_clean();
 
 			return $output;
-		}
-
-		// Returns the settings value "mobile_zoom" from sv_common
-		public function get_mobile_zoom(): bool {
-			if (
-				! $this->get_module( 'sv_common' )
-				||
-				! $this->get_module( 'sv_common' )->get_settings()['mobile_zoom']
-			) return true;
-
-			return boolval( $this->get_module( 'sv_common' )->get_setting( 'mobile_zoom' )->get_data() );
 		}
 	}

@@ -11,3 +11,11 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+.admin-bar .sv100_sv_footer_wrapper{
+	top:46px;
+}
+@media only screen and (min-width: 782px){
+	.admin-bar .sv100_sv_footer_wrapper{
+		top:32px;
+	}
+}

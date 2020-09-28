@@ -334,6 +334,9 @@
 		protected function register_scripts(): sv_footer {
 			parent::register_scripts();
 
+			$this->get_script( 'common' )->set_inline(true);
+			$this->get_script( 'config' )->set_inline(true);
+
 			// Register Styles
 			$this->get_script( 'sidebars' )
 				 ->set_path( 'lib/css/common/sidebars.css' );

@@ -8,9 +8,9 @@
 				->set_css_cache_active()
 				->set_section_title( $this->get_module_title() )
 				->set_section_desc( $this->get_module_desc() )
-				->set_section_type( 'settings' )
 				->set_section_template_path()
 				->set_section_order(4000)
+				->set_section_icon('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18 18h6v6h-6v-6zm-9 6h6v-6h-6v6zm-9 0h6v-6h-6v6zm0-8h24v-16h-24v16z"/></svg>')
 				->register_sidebars()
 				->get_root()
 				->add_section( $this );

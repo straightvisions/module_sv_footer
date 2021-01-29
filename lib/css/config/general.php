@@ -59,8 +59,8 @@
 			foreach($prepared_properties[$i] as $key => $value) {
 				$properties['margin-left'][$key]	= '15px';
 				$properties['margin-right'][$key]	= '15px';
-				$properties['justify-self'][$key]	= 'unset';
-				$properties['align-self'][$key]		= 'unset';
+				$properties['justify-self'][$key]	= 'center';
+				$properties['align-self'][$key]		= 'center';
 
 				// flex hacks to simulate parent justify content and add more options
 				if( isset($module->get_setting('direction')->get_data()[$key]) && $module->get_setting('direction')->get_data()[$key] === 'row' ) {

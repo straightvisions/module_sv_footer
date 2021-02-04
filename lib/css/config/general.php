@@ -83,11 +83,10 @@
 
 				// column direction doesn't need any hacks ;)
 				if( isset($module->get_setting('direction')->get_data()[$key]) && $module->get_setting('direction')->get_data()[$key] === 'column' ) {
-					$properties['align-self'][$key] 	= $value;
 					$properties['margin-left'][$key] 	= '0';
 					$properties['margin-right'][$key] 	= '0';
 				}
-
+				$properties['align-self'][$key] 	= $value;
 			}
 
 		}

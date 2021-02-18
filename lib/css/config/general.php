@@ -92,7 +92,7 @@
 		}
 
 		echo $_s->build_css(
-			'.sv100_sv_footer .sv100_sv_footer_bar > .sv100_sv_sidebar_sv_footer_'.$i,
+			'.sv100_sv_footer .sv100_sv_footer_bar > .sv100_sv_footer_'.$i,
 			$properties
 		);
 	}

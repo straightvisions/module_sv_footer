@@ -6,7 +6,7 @@
 		$check = false;
 		$sidebar = $module->get_root()->get_module( 'sv_sidebar' );
 		for($i = 1; $i < 6 ;$i++){
-			$check = $sidebar->load( array( 'id' => $module->get_module_name().'_1' ) ) ? true : false;
+			$check = $sidebar->load( $module->get_module_name().'_1' ) ? true : false;
 		}
 
 		if( $check ){

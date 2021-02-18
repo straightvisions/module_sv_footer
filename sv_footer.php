@@ -351,32 +351,27 @@
 		protected function register_sidebars(): sv_footer {
 			if ( $this->get_module( 'sv_sidebar' ) ) {
 				$this->get_module( 'sv_sidebar' )
-					->create( $this )
-					->set_ID( 1 )
+					->create( $this, $this->get_prefix(1) )
 					->set_title( __( 'Footer - 1', 'sv100' ) )
 					->set_desc( __( 'Widgets in this sidebar will be shown.', 'sv100' ) )
 					->load_sidebar()
 
-					->create( $this )
-					->set_ID( 2 )
+					->create( $this, $this->get_prefix(2) )
 					->set_title( __( 'Footer - 2', 'sv100' ) )
 					->set_desc( __( 'Widgets in this sidebar will be shown.', 'sv100' ) )
 					->load_sidebar()
 
-					->create( $this )
-					->set_ID( 3 )
+					->create( $this, $this->get_prefix(3) )
 					->set_title( __( 'Footer - 3', 'sv100' ) )
 					->set_desc( __( 'Widgets in this sidebar will be shown.', 'sv100' ) )
 					->load_sidebar()
 
-					->create( $this )
-					->set_ID( 4 )
+					->create( $this, $this->get_prefix(4) )
 					->set_title( __( 'Footer - 4', 'sv100' ) )
 					->set_desc( __( 'Widgets in this sidebar will be shown.', 'sv100' ) )
 					->load_sidebar()
 
-					->create( $this )
-					->set_ID( 5 )
+					->create( $this, $this->get_prefix(5) )
 					->set_title( __( 'Footer - 5', 'sv100' ) )
 					->set_desc( __( 'Widgets in this sidebar will be shown.', 'sv100' ) )
 					->load_sidebar();
@@ -389,7 +384,7 @@
 			$check = false;
 			if($this->get_module( 'sv_sidebar' )){
 				for($i = 1; $i < 6; $i++){
-					if($this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name() . '_'.$i ) ) ){
+					if($this->get_module( 'sv_sidebar' )->load( $this->get_prefix($i) ) ){
 						$check = true;
 					}
 				}

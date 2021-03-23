@@ -24,14 +24,7 @@
 			$module->get_setting('padding')->get_css_data('padding')
 		)
 	);
-
-	echo $_s->build_css(
-		'.sv100_sv_footer_credits > .sv100_sv_footer_credits_info',
-		array_merge(
-			$module->get_setting('direction')->get_css_data('flex-direction')
-		)
-	);
-
+	
 	// columns outer ---------------------------------------------------------------------------------------------------
 	$prepared_properties = array();
 	for($i = 1; $i < 6; $i++){

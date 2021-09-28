@@ -11,7 +11,6 @@
 				->set_section_template_path()
 				->set_section_order(4000)
 				->set_section_icon('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18 18h6v6h-6v-6zm-9 6h6v-6h-6v6zm-9 0h6v-6h-6v6zm0-8h24v-16h-24v16z"/></svg>')
-				->register_sidebars()
 				->get_root()
 				->add_section( $this );
 		}
@@ -30,6 +29,12 @@
 
 			// sidebar settings
 			for($i = 1; $i < 6; $i++){
+				$this->get_setting( 'sidebar_'.$i )
+					->set_title( __( 'Sidebar', 'sv100' ).' '.$i )
+					->set_description( __( 'Select Sidebar for this position.', 'sv100' ) )
+					->set_options( $this->get_module('sv_sidebar') ? $this->get_module('sv_sidebar')->get_sidebars_for_settings_options() : array('' => __('Please activate module SV Sidebar for this Feature.', 'sv100')) )
+					->load_type( 'select' );
+
 				$this->get_setting( 'sidebar_'.$i.'_alignment' )
 					->set_title( __( 'Footer - '.$i, 'sv100' ) )
 					->set_options( array(
@@ -40,9 +45,7 @@
 					->set_default_value( 'flex-start' )
 					->set_is_responsive(true)
 					->load_type( 'select' );
-			}
 
-			for($i = 1; $i < 6; $i++){
 				$this->get_setting( 'sidebar_'.$i.'_alignment_content' )
 					->set_title( __( 'Footer - '.$i, 'sv100' ) )
 					->set_options( array(
@@ -347,50 +350,18 @@
 
 			return $this;
 		}
-	
-		protected function register_sidebars(): sv_footer {
-			if ( $this->get_module( 'sv_sidebar' ) ) {
-				$this->get_module( 'sv_sidebar' )
-					->create( $this, $this->get_prefix(1) )
-					->set_title( __( 'Footer - 1', 'sv100' ) )
-					->set_desc( __( 'Widgets in this sidebar will be shown.', 'sv100' ) )
-					->load_sidebar()
-
-					->create( $this, $this->get_prefix(2) )
-					->set_title( __( 'Footer - 2', 'sv100' ) )
-					->set_desc( __( 'Widgets in this sidebar will be shown.', 'sv100' ) )
-					->load_sidebar()
-
-					->create( $this, $this->get_prefix(3) )
-					->set_title( __( 'Footer - 3', 'sv100' ) )
-					->set_desc( __( 'Widgets in this sidebar will be shown.', 'sv100' ) )
-					->load_sidebar()
-
-					->create( $this, $this->get_prefix(4) )
-					->set_title( __( 'Footer - 4', 'sv100' ) )
-					->set_desc( __( 'Widgets in this sidebar will be shown.', 'sv100' ) )
-					->load_sidebar()
-
-					->create( $this, $this->get_prefix(5) )
-					->set_title( __( 'Footer - 5', 'sv100' ) )
-					->set_desc( __( 'Widgets in this sidebar will be shown.', 'sv100' ) )
-					->load_sidebar();
-
-			}
-	
-			return $this;
-		}
 		public function has_footer_content(): bool{
-			$check = false;
-			if($this->get_module( 'sv_sidebar' )){
-				for($i = 1; $i < 6; $i++){
-					if($this->get_module( 'sv_sidebar' )->load( $this->get_prefix($i) ) ){
-						$check = true;
-					}
+			if ( !$this->get_module( 'sv_sidebar' ) ) {
+				return false;
+			}
+
+			for($i = 1; $i < 6; $i++){
+				if( $this->get_module( 'sv_sidebar' )->load( $this->get_setting('sidebar_'.$i)->get_data() ) ) {
+					return true;
 				}
 			}
 
-			return $check;
+			return false;
 		}
 
 		public function load( $settings = array() ): string {

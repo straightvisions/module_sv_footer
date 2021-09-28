@@ -14,7 +14,14 @@
 				echo $module->get_setting( 'direction' )->form();
 			?>
 		</div>
-
+		<h3 class="divider"><?php _e( 'Sidebars', 'sv100' ); ?></h3>
+		<div class="sv_setting_flex">
+			<?php
+				for($i = 1; $i < 6; $i++){
+					echo $module->get_setting( 'sidebar_'.$i )->form();
+				}
+			?>
+		</div>
 		<h3 class="divider"><?php _e( 'Columns Alignments', 'sv100' ); ?></h3>
 		<div class="sv_setting_flex">
 			<?php

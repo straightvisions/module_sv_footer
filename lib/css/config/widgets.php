@@ -47,7 +47,7 @@
 		'.sv100_sv_footer .sv100_sv_footer_bar .sv100_sv_sidebar .widget_search input',
 		array_merge(
 			$module->get_setting('text_color_link')->get_css_data(),
-			$module->get_setting('text_color_link')->get_css_data('border-color'),
+			$module->get_setting('text_color_link')->get_css_data('border-color')
 		)
 	);
 
@@ -55,7 +55,7 @@
 		'.sv100_sv_footer .sv100_sv_footer_bar .sv100_sv_sidebar .widget_search form:hover input,
 		.sv100_sv_footer .sv100_sv_footer_bar .sv100_sv_sidebar .widget_search form:focus input',
 		array_merge(
-			$module->get_setting('text_color_link_hover')->get_css_data('border-color'),
+			$module->get_setting('text_color_link_hover')->get_css_data('border-color')
 		)
 	);
 
@@ -63,6 +63,6 @@
 		'.sv100_sv_footer .sv100_sv_footer_bar .sv100_sv_sidebar .widget_search input:hover,
 		.sv100_sv_footer .sv100_sv_footer_bar .sv100_sv_sidebar .widget_search input:focus',
 		array_merge(
-			$module->get_setting('text_color_link_hover')->get_css_data(),
+			$module->get_setting('text_color_link_hover')->get_css_data()
 		)
 	);

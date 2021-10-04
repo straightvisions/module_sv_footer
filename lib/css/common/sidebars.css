@@ -19,6 +19,7 @@
 .sv100_sv_footer_bar .sv100_sv_sidebar .widget{
 	margin-bottom:10px;
 	display:flex;
+	flex-direction:column;
 }
 .sv100_sv_footer_bar .sv100_sv_sidebar > *:last-child{
 	margin-bottom:0;

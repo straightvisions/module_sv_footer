@@ -4,7 +4,6 @@
 	flex: 0 1 auto;
 	margin:0 15px 15px 15px; /* changes here must be also applied in sidebars config */
 	flex-direction: column;
-	flex-basis:100%;
 }
 
 .sv100_sv_footer .sv100_sv_footer_bar > div:first-child{
@@ -17,7 +16,6 @@
 
 /* common inner ------------------------------ */
 .sv100_sv_footer_bar .sv100_sv_sidebar .widget{
-	margin-bottom:10px;
 	display:flex;
 	flex-direction:column;
 }

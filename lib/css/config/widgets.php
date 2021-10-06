@@ -2,7 +2,7 @@
 
 	// text ---------------------------------------------------------------------------------------------------
 	echo $_s->build_css(
-		'.sv100_sv_footer .sv100_sv_footer_bar,
+		'.sv100_sv_footer .sv100_sv_footer_bar, .sv100_sv_footer .sv100_sv_footer_bar p,
 		.sv100_sv_footer .sv100_sv_footer_bar .sv100_sv_sidebar .widget_search input',
 		array_merge(
 			$module->get_setting('font')->get_css_data('font-family'),

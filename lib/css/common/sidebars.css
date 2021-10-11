@@ -4,6 +4,18 @@
 	flex: 0 1 auto;
 	margin:0 15px 15px 15px; /* changes here must be also applied in sidebars config */
 	flex-direction: column;
+	flex-basis:100%;
+}
+
+.sv100_sv_footer .sv100_sv_footer_bar h1,
+.sv100_sv_footer .sv100_sv_footer_bar h2,
+.sv100_sv_footer .sv100_sv_footer_bar h3,
+.sv100_sv_footer .sv100_sv_footer_bar h4,
+.sv100_sv_footer .sv100_sv_footer_bar h5,
+.sv100_sv_footer .sv100_sv_footer_bar h6
+{
+	margin-left:0;
+	margin-right:0;
 }
 
 .sv100_sv_footer .sv100_sv_footer_bar > div:first-child{

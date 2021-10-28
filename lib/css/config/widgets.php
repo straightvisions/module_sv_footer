@@ -15,12 +15,12 @@
 	// widget_title ----------------------------------------------------------------------------------------------------
 	echo $_s->build_css(
 		'
-		.sv100_sv_footer .sv100_sv_footer_bar .widget_block h1,
-		.sv100_sv_footer .sv100_sv_footer_bar .widget_block h2,
-		.sv100_sv_footer .sv100_sv_footer_bar .widget_block h3,
-		.sv100_sv_footer .sv100_sv_footer_bar .widget_block h4,
-		.sv100_sv_footer .sv100_sv_footer_bar .widget_block h5,
-		.sv100_sv_footer .sv100_sv_footer_bar .widget_block h6
+		.sv100_sv_footer .sv100_sv_footer_bar .widget h1,
+		.sv100_sv_footer .sv100_sv_footer_bar .widget h2,
+		.sv100_sv_footer .sv100_sv_footer_bar .widget h3,
+		.sv100_sv_footer .sv100_sv_footer_bar .widget h4,
+		.sv100_sv_footer .sv100_sv_footer_bar .widget h5,
+		.sv100_sv_footer .sv100_sv_footer_bar .widget h6
 		',
 		array_merge(
 			$module->get_setting('font_widget_title')->get_css_data('font-family'),

@@ -38,3 +38,8 @@
 .sv100_sv_footer .sv100_sv_footer_bar .widget_nav_menu ul.sub-menu{
 	display:none;
 }
+
+
+.sv100_sv_footer_bar .sv100_sv_sidebar .widget p{
+	margin-top:0;
+}

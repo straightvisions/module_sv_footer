@@ -26,6 +26,11 @@
 	);
 	
 	// columns outer ---------------------------------------------------------------------------------------------------
+	echo $_s->build_css(
+		'.sv100_sv_footer .sv100_sv_footer_bar > div',
+		$module->get_setting('columns_spacing')->get_css_data('padding')
+	);
+	
 	$prepared_properties = array();
 	for($i = 1; $i < 6; $i++){
 		if($module->get_setting('sidebar_' . $i . '_alignment')->get_data()) {
@@ -45,15 +50,13 @@
 
 			// outer stuff
 			$properties['justify-self'] = array(); // row
-			$properties['align-self'] 	= array(); // column
 			$properties['margin-left'] 	= array();
 			$properties['margin-right'] = array();
 
 			foreach($prepared_properties[$i] as $key => $value) {
-				$properties['margin-left'][$key]	= '15px';
-				$properties['margin-right'][$key]	= '15px';
+				$properties['margin-left'][$key]	= 'initial';
+				$properties['margin-right'][$key]	= 'intiial';
 				$properties['justify-self'][$key]	= 'center';
-				$properties['align-self'][$key]		= 'center';
 
 				// flex hacks to simulate parent justify content and add more options
 				if( isset($module->get_setting('direction')->get_data()[$key]) && $module->get_setting('direction')->get_data()[$key] === 'row' ) {
@@ -79,7 +82,6 @@
 					$properties['margin-left'][$key] 	= '0';
 					$properties['margin-right'][$key] 	= '0';
 				}
-				$properties['align-self'][$key] 	= $value;
 			}
 
 		}

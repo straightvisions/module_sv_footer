@@ -26,6 +26,18 @@
 				->set_description( __( 'The direction of columns.', 'sv100' ) )
 				->set_is_responsive(true)
 				->load_type( 'select' );
+			
+			$this->get_setting( 'columns_spacing' )
+			     ->set_title( __( 'Spacing', 'sv100' ) )
+			     ->set_default_value( array(
+				     'top' => '0',
+				     'right' => '20px',
+				     'bottom' => '0',
+				     'left' => '20px',
+			     ) )
+			     ->set_description( __( 'Inner gap between sidebars.', 'sv100' ) )
+			     ->set_is_responsive(true)
+			     ->load_type( 'margin' );
 
 			// sidebar settings
 			for($i = 1; $i < 6; $i++){

@@ -1,8 +1,16 @@
 /* columns -------------------------------- */
 .sv100_sv_footer .sv100_sv_footer_bar > div{
 	display: flex;
-	flex: 0 1 auto;
+	flex: 0 1 auto; /* flex-grow 0 to allow horizontal alignment to work */
 	flex-direction: column;
+}
+
+.sv100_sv_footer .sv100_sv_footer_bar > div:first-child{
+	padding-left:0;
+}
+
+.sv100_sv_footer .sv100_sv_footer_bar > div:last-child{
+	padding-right:0;
 }
 
 .sv100_sv_footer .sv100_sv_footer_bar h1,

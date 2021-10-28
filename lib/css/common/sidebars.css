@@ -2,9 +2,7 @@
 .sv100_sv_footer .sv100_sv_footer_bar > div{
 	display: flex;
 	flex: 0 1 auto;
-	margin:0 15px auto 15px; /* changes here must be also applied in sidebars config */
 	flex-direction: column;
-	flex-basis:100%;
 }
 
 .sv100_sv_footer .sv100_sv_footer_bar h1,
@@ -16,14 +14,6 @@
 {
 	margin-left:0;
 	margin-right:0;
-}
-
-.sv100_sv_footer .sv100_sv_footer_bar > div:first-child{
-	margin-left: 0 !important; /* override inline css */
-}
-
-.sv100_sv_footer .sv100_sv_footer_bar > div:last-child{
-	margin-right: 0 !important; /* override inline css */
 }
 
 /* common inner ------------------------------ */

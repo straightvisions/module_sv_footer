@@ -55,7 +55,7 @@
 
 			foreach($prepared_properties[$i] as $key => $value) {
 				$properties['margin-left'][$key]	= 'initial';
-				$properties['margin-right'][$key]	= 'intiial';
+				$properties['margin-right'][$key]	= 'initial';
 				$properties['justify-self'][$key]	= 'center';
 
 				// flex hacks to simulate parent justify content and add more options

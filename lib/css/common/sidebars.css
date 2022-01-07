@@ -1,5 +1,5 @@
 /* columns -------------------------------- */
-.sv100_sv_footer .sv100_sv_footer_bar > div{
+.sv100_sv_footer .sv100_sv_sidebar{
 	display: flex;
 	flex-basis: 0;
 	flex-grow: 1;

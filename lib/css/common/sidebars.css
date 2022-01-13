@@ -1,9 +1,17 @@
 /* columns -------------------------------- */
-.sv100_sv_footer .sv100_sv_sidebar{
+.sv100_sv_footer .sv100_sv_footer_bar > div{
 	display: flex;
-	flex-basis: 0;
-	flex-grow: 1;
+	flex: 0 1 auto; /* flex-grow 0 to allow horizontal alignment to work */
 	flex-direction: column;
+}
+
+/* remove left padding to align to left container edge */
+.sv100_sv_footer .sv100_sv_footer_bar > div:first-child{
+	padding-left:0;
+}
+/* remove right padding to align to right container edge */
+.sv100_sv_footer .sv100_sv_footer_bar > div:last-child{
+	padding-right:0;
 }
 
 .sv100_sv_footer .sv100_sv_footer_bar h1,
@@ -18,6 +26,13 @@
 }
 
 /* common inner ------------------------------ */
+.sv100_sv_footer .sv100_sv_sidebar{
+	display: flex;
+	flex-basis: 0;
+	flex-grow: 1;
+	flex-direction: column;
+}
+
 .sv100_sv_footer_bar .sv100_sv_sidebar .widget{
 	display:flex;
 	flex-direction:column;

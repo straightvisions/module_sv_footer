@@ -61,10 +61,11 @@
 				// flex hacks to simulate parent justify content and add more options
 				if( isset($module->get_setting('direction')->get_data()[$key]) && $module->get_setting('direction')->get_data()[$key] === 'row' ) {
 
-					if( $value === 'flex-start'&& $prepared_properties[$i+1][$key] != 'flex-start'){
+					// check if next sidebar is NOT aligned the same way to prevent weird gaps
+					if( $value === 'flex-start' && $prepared_properties[$i+1][$key] != 'flex-start'){
 						$properties['margin-right'][$key] = 'auto';
 					}
-
+					// check if previous sidebar is NOT aligned the same way to prevent weird gaps
 					if( $value === 'flex-end' && $prepared_properties[$i-1][$key] != 'flex-end'){
 						$properties['margin-left'][$key] = 'auto';
 					}

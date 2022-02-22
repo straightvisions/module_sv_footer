@@ -2,7 +2,7 @@
 .sv100_sv_footer_wrapper {
 	width: 100%;
 	top: 0;
-	z-index: 800;
+	z-index: 800000;
 }
 .sv100_sv_footer .sv100_sv_footer_bar {
 	display: flex;

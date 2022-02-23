@@ -4,11 +4,6 @@
 	top: 0;
 	z-index: 800000;
 }
-.sv100_sv_footer .sv100_sv_footer_bar {
-	display: flex;
-	margin-left: auto;
-	margin-right: auto;
-}
 .sv100_sv_footer .sv100_sv_footer_bar .menu{
 	display:flex;
 }

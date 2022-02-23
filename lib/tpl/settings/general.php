@@ -11,42 +11,9 @@
 		<div class="sv_setting_flex">
 			<?php
 				echo $module->get_setting( 'position' )->form();
-				echo $module->get_setting( 'direction' )->form();
+				echo $module->get_setting( 'sidebar' )->form();
 			?>
 		</div>
-		<h3 class="divider"><?php _e( 'Sidebars', 'sv100' ); ?></h3>
-		<div class="sv_setting_flex">
-			<?php
-				for($i = 1; $i < 6; $i++){
-					echo $module->get_setting( 'sidebar_'.$i )->form();
-				}
-			?>
-		</div>
-		<h3 class="divider"><?php _e( 'Columns Alignments', 'sv100' ); ?></h3>
-		<div class="sv_setting_flex">
-			<?php
-				for($i = 1; $i < 6; $i++){
-					echo $module->get_setting( 'sidebar_'.$i.'_alignment' )->form();
-				}
-			?>
-		</div>
-
-		<h3 class="divider"><?php _e( 'Columns Content Alignments', 'sv100' ); ?></h3>
-		<div class="sv_setting_flex">
-			<?php
-				for($i = 1; $i < 6; $i++){
-					echo $module->get_setting( 'sidebar_'.$i.'_alignment_content' )->form();
-				}
-			?>
-		</div>
-		
-		<h3 class="divider"><?php _e( 'Columns Spacing', 'sv100' ); ?></h3>
-		<div class="sv_setting_flex">
-			<?php
-				echo $module->get_setting( 'columns_spacing' )->form();
-			?>
-		</div>
-
 		<h3 class="divider"><?php _e( 'Spacing', 'sv100' ); ?></h3>
 		<div class="sv_setting_flex">
 			<?php

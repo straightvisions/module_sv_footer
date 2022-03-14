@@ -7,7 +7,9 @@
 	);
 
 	echo $_s->build_css(
-		'.sv100_sv_footer',
+		is_admin()
+			? 'div[data-widget-area-id="'.$module->get_setting('sidebar')->get_data().'"] > .block-editor-block-list__layout'
+			: '.sv100_sv_footer',
 		array_merge(
 			$module->get_setting('max_width_container')->get_css_data('max-width'),
 			$module->get_setting('border')->get_css_data(),

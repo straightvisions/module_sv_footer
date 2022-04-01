@@ -1,9 +1,12 @@
 /* ### Mobile ### */
 .sv100_sv_footer_wrapper {
-	width: 100%;
 	top: 0;
 	z-index: 800000;
 }
+.sv100_sv_footer_bar {
+	margin: 0 auto;
+}
+
 .sv100_sv_footer .sv100_sv_footer_bar .menu{
 	display:flex;
 }

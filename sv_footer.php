@@ -29,13 +29,6 @@
 				->set_is_responsive(true)
 				->load_type( 'color' );
 
-			// Box Shadow
-			$this->get_setting('box_shadow_color')
-				->set_title( __( 'Box Shadow Color', 'sv100' ) )
-				->set_description( __( 'Color of the box shadow.', 'sv100' ) )
-				->set_is_responsive(true)
-				->load_type( 'color' );
-
 			$this->get_setting( 'max_width_container' )
 				->set_title( __( 'Max Width Footer Container', 'sv100' ) )
 				->set_description( __( 'Set the max width of the Footer container', 'sv100' ) )
@@ -64,34 +57,6 @@
 				->set_default_value( 'relative' )
 				->set_is_responsive(true)
 				->load_type( 'select' );
-
-			$this->get_setting('margin')
-				->set_title(__('Margin', 'sv100'))
-				->set_default_value(array(
-					'top' => '15px',
-					'right' => 'auto',
-					'bottom' => '0',
-					'left' => 'auto',
-					)
-				)
-				->set_is_responsive(true)
-				->load_type('margin');
-
-			$this->get_setting('padding')
-				->set_title(__('Padding', 'sv100'))
-				->set_is_responsive(true)
-				->set_default_value( array(
-					'top' => '30px',
-					'right' => '15px',
-					'bottom' => '30px',
-					'left' => '15px',
-				) )
-				->load_type('margin');
-
-			$this->get_setting( 'border' )
-				->set_title( __( 'Border', 'sv100' ) )
-				->set_is_responsive(true)
-				->load_type( 'border' );
 
 			$this->load_settings_navbars();
 

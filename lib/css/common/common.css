@@ -5,6 +5,7 @@
 }
 .sv100_sv_footer_bar {
 	margin: 0 auto;
+	padding:0 var(--sv100_sv_common-spacing);
 }
 
 .sv100_sv_footer .sv100_sv_footer_bar .menu{

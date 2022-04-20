@@ -13,6 +13,10 @@
 				->set_section_icon('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18 18h6v6h-6v-6zm-9 6h6v-6h-6v6zm-9 0h6v-6h-6v6zm0-8h24v-16h-24v16z"/></svg>')
 				->get_root()
 				->add_section( $this );
+
+			add_action('init', function(){
+				$this->load_settings()->add_metaboxes();
+			});
 		}
 		
 		protected function load_settings(): sv_footer {
@@ -165,12 +169,12 @@
 
 			return $this;
 		}
-		public function has_footer_content(): bool{
+		public function has_sidebar_content(): bool{
 			if ( !$this->get_module( 'sv_sidebar' ) ) {
 				return false;
 			}
 
-			if( $this->get_module( 'sv_sidebar' )->load( $this->get_setting('sidebar')->get_data() ) ) {
+			if( $this->get_module( 'sv_sidebar' )->load( $this->get_metabox_data('sidebar') ) ) {
 				return true;
 			}
 
@@ -181,7 +185,7 @@
 			if(!is_admin()){
 				$this->load_settings()->register_scripts();
 
-				if ( $this->has_footer_content() ) {
+				if ( $this->has_sidebar_content() ) {
 					foreach($this->get_scripts() as $script){
 						$script->set_is_enqueued();
 					}
@@ -195,5 +199,21 @@
 			$output							= ob_get_clean();
 
 			return $output;
+		}
+		private function add_metaboxes(): sv_footer{
+			$this->metaboxes			= $this->get_root()->get_module('sv_metabox');
+
+			$states						= $this->get_module('sv_sidebar') ? $this->get_module('sv_sidebar')->get_sidebars_for_metabox_options() : array('' => __('Please activate module SV Sidebar for this Feature.', 'sv100'));
+
+			$this->metaboxes->get_setting( $this->get_prefix('sidebar') )
+				->set_title( __('Sidebar Footer', 'sv100') )
+				->set_description( __('Override Default Settings', 'sv100') )
+				->load_type( 'select' )
+				->set_options($states);
+
+			return $this;
+		}
+		public function show_sidebar(): string{
+			return $this->has_sidebar_content() ? $this->get_metabox_data('sidebar') : '';
 		}
 	}

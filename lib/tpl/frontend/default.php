@@ -1,5 +1,5 @@
 <div class="<?php echo $this->get_prefix('wrapper'); ?>">
-	<?php if ( $this->has_footer_content() ) { ?>
+	<?php if ( $this->has_sidebar_content() ) { ?>
 	<footer class="<?php echo $this->get_prefix(); ?>">
 		<div class="<?php echo $this->get_prefix('bar'); ?>">
 			<?php include( $this->get_path( 'lib/tpl/frontend/sidebar.php' ) ); ?>

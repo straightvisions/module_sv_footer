@@ -3,7 +3,7 @@ if ( apply_filters( $this->get_prefix('credits'), true ) ) {
 	$text = '<span>'
 			. __( 'Theme by', 'sv100' )
 			. '</span><a href="' . wp_get_theme()->display( 'AuthorURI' )
-			. '" rel="nofollow" target="_blank">'
+			. '" rel="nofollow noopener" target="_blank">'
 			. strip_tags( wp_get_theme()->display( 'Author' ))
 			. '</a>';
 	?>

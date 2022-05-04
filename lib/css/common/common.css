@@ -1,0 +1,20 @@
+/* ### Mobile ### */
+.sv100_sv_footer_wrapper {
+	top: 0;
+	z-index: 800000;
+}
+.sv100_sv_footer_bar {
+	margin: 0 auto;
+	padding:0 var(--sv100_sv_common-spacing);
+}
+
+.sv100_sv_footer .sv100_sv_footer_bar .menu{
+	display:flex;
+}
+.sv100_sv_footer .sv100_sv_footer_bar .menu-item a{
+	display:inline-block;
+}
+
+.sv100_sv_footer .sv100_sv_footer_bar .menu .sub-menu{
+	display:none;
+}

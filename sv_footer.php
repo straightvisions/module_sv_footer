@@ -189,7 +189,9 @@
 					foreach($this->get_scripts() as $script){
 						$script->set_is_enqueued();
 					}
-				}else{
+				}
+
+				if ( apply_filters( $this->get_prefix('credits'), true ) ) {
 					$this->get_script( 'credits' )->set_is_enqueued();
 				}
 			}
